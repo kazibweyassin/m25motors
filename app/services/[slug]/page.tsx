@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight, MapPin, PhoneCall } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
+import { getBlogPostsForService } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { getServiceBySlug, getPhoneHref, getServiceBookingHref, services, siteConfig } from "@/lib/site";
 
@@ -43,6 +44,8 @@ export default async function ServiceDetailPage({
   if (!service) {
     return notFound();
   }
+
+  const relatedArticles = getBlogPostsForService(slug).slice(0, 2);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
@@ -112,6 +115,24 @@ export default async function ServiceDetailPage({
           ))}
         </div>
       </div>
+      {relatedArticles.length ? (
+        <section aria-labelledby="related-articles-title" className="mt-12 border-t border-zinc-200 pt-10 sm:mt-16 sm:pt-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-600">From the M25 Motors blog</p>
+          <h2 id="related-articles-title" className="mt-3 text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">More advice about {service.title.toLowerCase()}</h2>
+          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            {relatedArticles.map((post) => (
+              <li key={post.slug}>
+                <Link href={`/blog/${post.slug}`} className="group block h-full rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-red-200 hover:shadow-md sm:p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">{post.category} <span className="px-1 text-zinc-400">/</span> {post.readingMinutes} min read</p>
+                  <h3 className="mt-3 text-lg font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-red-800">{post.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-zinc-600">{post.excerpt}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-700">Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",

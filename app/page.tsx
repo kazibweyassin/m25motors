@@ -8,7 +8,9 @@ import { CarMotion } from "@/components/car-motion";
 import { HomeHeroBackground } from "@/components/home-hero-background";
 import { StaggeredHeadline } from "@/components/staggered-headline";
 import { Reveal } from "@/components/reveal";
+import { BlogCard } from "@/components/blog-card";
 import { getBookingHref, hasGoogleProfile, services, siteConfig } from "@/lib/site";
+import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata(
   "Car Repairs, Servicing & Diagnostics in London",
@@ -38,7 +40,7 @@ export default function HomePage() {
   return (
     <div className="relative isolate">
       <HomeHeroBackground />
-      <div className="relative z-10 pb-20">
+      <div className="relative z-10">
       <section className="relative min-h-0 overflow-hidden bg-zinc-950/70 text-white lg:min-h-[calc(100svh-5rem)]">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-zinc-950/55 via-zinc-950/30 to-zinc-950/10" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-950/10 via-transparent to-zinc-950/45" />
@@ -103,6 +105,27 @@ export default function HomePage() {
               <ServiceCard service={service} />
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-stone-100/90 py-14 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Car care guides"
+              title="Clear advice for your next decision"
+              description="Read practical repair guides and used-car reviews, with links to official UK sources and checks."
+            />
+            <div className="flex flex-col items-start gap-2 self-start sm:items-end">
+              <Link href="/blog" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-700 transition hover:text-red-900">
+                Browse all articles <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/blog#used-car-reviews" className="inline-flex min-h-11 items-center text-sm font-semibold text-zinc-600 transition hover:text-red-700">Explore used-car reviews</Link>
+            </div>
+          </div>
+          <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-7 md:grid-cols-2 xl:grid-cols-3">
+            {blogPosts.slice(0, 3).map((post) => <BlogCard key={post.slug} post={post} />)}
+          </div>
         </div>
       </section>
 

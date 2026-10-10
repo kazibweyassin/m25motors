@@ -19,8 +19,10 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 28, filter: "blur(6px)" }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      // Keep server-rendered content visible even if client-side scroll
+      // observers are delayed or unavailable. Motion still lifts it into place.
+      initial={reduceMotion ? false : { opacity: 1, y: 10 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
       whileHover={lift && !reduceMotion ? { y: -7, scale: 1.015 } : undefined}

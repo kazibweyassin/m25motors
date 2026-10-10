@@ -5,6 +5,7 @@
 ## Website
 - [Home](https://m25motors.co.uk/): Overview of M25 Motors and its vehicle services.
 - [Services](https://m25motors.co.uk/services): List of vehicle maintenance and repair services.
+- [Blog](https://m25motors.co.uk/blog): Used-car buying guides plus practical servicing, MOT, brake and diagnostic advice for UK drivers, with official source links.
 - [About](https://m25motors.co.uk/about): Information about M25 Motors and its London service area.
 - [Contact](https://m25motors.co.uk/contact): Enquiries and appointment requests.
 - [Privacy information](https://m25motors.co.uk/privacy): How the website's WhatsApp booking form handles enquiry details.
@@ -19,5 +20,19 @@
 - [Air conditioning](https://m25motors.co.uk/services/air-conditioning)
 - [Tyres and suspension](https://m25motors.co.uk/services/tyres-and-suspension)
 - [Electrical faults](https://m25motors.co.uk/services/electrical-faults)
+
+## Car care guides
+- [UK car servicing schedules](https://m25motors.co.uk/blog/car-servicing-schedule-uk): How to find your vehicle's service interval, what routine maintenance may include, and which records and safety checks to keep.
+- [MOT preparation checklist for London drivers](https://m25motors.co.uk/blog/mot-preparation-checklist-london): Practical checks for tyres, lights, visibility, brakes and warning lamps before the official test.
+- [Brake warning signs](https://m25motors.co.uk/blog/brake-warning-signs-car): Common brake symptoms, when to stop driving and what to share when arranging an inspection.
+- [Engine warning light guide](https://m25motors.co.uk/blog/engine-warning-light-what-to-do): How to interpret a warning using the vehicle handbook and prepare for a diagnostic assessment.
+
+## Used-car buying guides
+The first model reviews cover the five most-traded UK used car models in SMMT's Q2 2026 data. Transaction volume indicates popularity, not reliability or vehicle condition. Each guide recommends checking the specific vehicle's MOT, recall and registration details before purchase.
+- [Used Ford Fiesta buying guide](https://m25motors.co.uk/blog/used-ford-fiesta-buying-guide)
+- [Used Vauxhall Corsa buying guide](https://m25motors.co.uk/blog/used-vauxhall-corsa-buying-guide)
+- [Used Volkswagen Golf buying guide](https://m25motors.co.uk/blog/used-volkswagen-golf-buying-guide)
+- [Used Ford Focus buying guide](https://m25motors.co.uk/blog/used-ford-focus-buying-guide)
+- [Used Volkswagen Polo buying guide](https://m25motors.co.uk/blog/used-volkswagen-polo-buying-guide)
 
 Phone: +44 7803 080701. Service availability and appointment times should be confirmed directly with the garage. The website does not currently publish a verified street address, opening hours or customer review ratings.

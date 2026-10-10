@@ -13,7 +13,9 @@ export function HomeHeroBackground() {
   const [heroVideoVisible, setHeroVideoVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(true);
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  // Keep enough overscan around the fixed video so parallax never exposes the
+  // page background at the top or bottom of the viewport.
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 1023px)");
@@ -25,10 +27,7 @@ export function HomeHeroBackground() {
 
   useEffect(() => {
     const heroVideo = document.querySelector("[data-hero-video]");
-    if (!heroVideo) {
-      setHeroVideoVisible(false);
-      return;
-    }
+    if (!heroVideo) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => setHeroVideoVisible(entry.isIntersecting),
@@ -61,7 +60,7 @@ export function HomeHeroBackground() {
           className="object-cover object-center opacity-35"
         />
       </div>
-      <motion.div className="absolute -inset-y-[12%] inset-x-0 hidden lg:block" style={{ y: reduceMotion ? 0 : y }}>
+      <motion.div className="absolute -inset-y-[20%] inset-x-0 hidden lg:block" style={{ y: reduceMotion ? 0 : y }}>
         <video
           ref={backgroundVideo}
           className="h-full w-full object-cover object-center opacity-45"

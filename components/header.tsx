@@ -9,6 +9,7 @@ import { getBookingHref, getPhoneHref, siteConfig } from "@/lib/site";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -31,7 +32,7 @@ export function Header() {
           </div>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-5 lg:gap-6 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -46,7 +47,7 @@ export function Header() {
         <div className="hidden items-center gap-3 md:flex">
           {getPhoneHref() ? <a
             href={getPhoneHref()}
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10"
+            className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10 xl:inline-flex"
           >
             <PhoneCall className="h-4 w-4" />
             {siteConfig.phone}
