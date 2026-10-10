@@ -1,0 +1,23 @@
+# M25 Motors
+
+> M25 Motors provides car servicing, vehicle diagnostics and repairs for drivers in London and surrounding areas.
+
+## Website
+- [Home](https://m25motors.co.uk/): Overview of M25 Motors and its vehicle services.
+- [Services](https://m25motors.co.uk/services): List of vehicle maintenance and repair services.
+- [About](https://m25motors.co.uk/about): Information about M25 Motors and its London service area.
+- [Contact](https://m25motors.co.uk/contact): Enquiries and appointment requests.
+- [Privacy information](https://m25motors.co.uk/privacy): How the website's WhatsApp booking form handles enquiry details.
+
+## Services
+- [Vehicle servicing](https://m25motors.co.uk/services/vehicle-servicing)
+- [Vehicle diagnostics](https://m25motors.co.uk/services/diagnostics)
+- [Brake repairs](https://m25motors.co.uk/services/brake-repairs)
+- [Engine repairs](https://m25motors.co.uk/services/engine-repairs)
+- [Clutch and transmission](https://m25motors.co.uk/services/clutch-and-transmission)
+- [MOT preparation and repairs](https://m25motors.co.uk/services/mot-preparation-and-repairs)
+- [Air conditioning](https://m25motors.co.uk/services/air-conditioning)
+- [Tyres and suspension](https://m25motors.co.uk/services/tyres-and-suspension)
+- [Electrical faults](https://m25motors.co.uk/services/electrical-faults)
+
+Phone: +44 7803 080701. Service availability and appointment times should be confirmed directly with the garage. The website does not currently publish a verified street address, opening hours or customer review ratings.

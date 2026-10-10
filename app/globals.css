@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f3ef;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --muted: #5b5b60;
+  --border: #e4e4e7;
+  --accent: #b91c1c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@media (max-width: 639px) {
+  html { scroll-padding-bottom: 6rem; }
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(185, 28, 28, 0.18);
+}
+
+.car-showcase-shell { position: relative; perspective: 1100px; }
+.car-showcase-shell::before {
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 1px solid rgba(252, 165, 165, 0.3);
+  border-radius: 1.35rem;
+  content: "";
+  pointer-events: none;
+}
+
+.car-showcase {
+  position: relative;
+  isolation: isolate;
+  height: min(64svh, 650px);
+  min-height: 420px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.35rem;
+  background: #18181b;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3), 0 0 44px rgba(239, 68, 68, 0.08);
+  outline: none;
+  transform-style: preserve-3d;
+  transition: border-color 350ms ease, box-shadow 350ms ease;
+  cursor: crosshair;
+}
+
+.car-showcase:hover, .car-showcase:focus-visible {
+  border-color: rgba(252, 165, 165, 0.55);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.4), 0 0 55px rgba(239, 68, 68, 0.25);
+}
+
+.car-showcase__photo {
+  position: absolute;
+  inset: -3%;
+  z-index: -2;
+  transform-origin: center;
+}
+
+.car-showcase__shade {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 9, 11, 0.65), rgba(9, 9, 11, 0.03) 38%, rgba(9, 9, 11, 0.74)), linear-gradient(90deg, rgba(9, 9, 11, 0.3), transparent 60%);
+}
+
+.car-showcase__lens {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(248, 113, 113, 0.26), rgba(239, 68, 68, 0.08) 42%, transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.car-showcase__beam {
+  position: absolute;
+  bottom: 23%;
+  left: 24%;
+  width: 48%;
+  height: 85px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgba(254, 243, 199, 0.5), rgba(253, 224, 71, 0.12) 55%, transparent);
+  filter: blur(20px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.car-showcase__topline, .car-showcase__bottomline {
+  position: absolute;
+  right: 1.2rem;
+  left: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.car-showcase__topline { top: 1.15rem; }
+.car-showcase__bottomline { bottom: 1.1rem; }
+.car-showcase__brand { font-size: 0.85rem; letter-spacing: 0.12em; }
+.car-showcase__brand span { color: #fecaca; font-weight: 500; }
+.car-showcase__mode { color: #fecaca; text-align: right; }
+.car-showcase__coordinates { color: rgba(255, 255, 255, 0.65); }
+
+.car-showcase__pulse {
+  width: 7px;
+  height: 7px;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 14px #ef4444;
+}
+
+.car-showcase__bottomline span:nth-child(2) { margin-right: auto; }
+
+.whatsapp-widget__pulse { animation: whatsapp-pulse 2.4s ease-out infinite; }
+
+@keyframes whatsapp-pulse {
+  0% { opacity: 0.75; transform: scale(0.75); }
+  80%, 100% { opacity: 0; transform: scale(1.55); }
+}
+
+@media (max-width: 1023px) {
+  .car-showcase-shell::before { inset: 9px -8px -9px 8px; border-radius: 0.95rem; }
+  .car-showcase { height: auto; aspect-ratio: 16 / 10; min-height: 0; border-radius: 0.85rem; cursor: default; }
+  .car-showcase__topline, .car-showcase__bottomline { right: 0.85rem; left: 0.85rem; font-size: 0.53rem; letter-spacing: 0.14em; }
+  .car-showcase__lens, .car-showcase__beam { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
