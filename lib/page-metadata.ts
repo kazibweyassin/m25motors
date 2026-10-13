@@ -17,7 +17,7 @@ export function createPageMetadata(title: string, description: string, path: str
       url,
       siteName: siteConfig.businessName,
       type: "website",
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "Car care and repairs from M25 Motors in London" }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: "Car care and repairs from M25 Motors" }],
     },
     twitter: {
       card: "summary_large_image",

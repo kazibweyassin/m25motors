@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata(
   "Used Car Reviews, Car Repair & Maintenance Guides",
-  `Used-car buying guides for popular UK models plus car servicing, MOT, brake and diagnostic advice for London drivers from ${siteConfig.businessName}.`,
+  `Used-car buying guides for popular UK models plus car servicing, MOT, brake and diagnostic advice for drivers from ${siteConfig.businessName}.`,
   "/blog",
 );
 
@@ -20,7 +20,7 @@ export default function BlogPage() {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: `${siteConfig.businessName} car care guides`,
-    description: "Used-car buying guides and practical maintenance information for drivers in London and the UK.",
+    description: "Used-car buying guides and practical maintenance information for drivers in the UK.",
     url: `${siteConfig.siteUrl}/blog`,
     publisher: { "@type": "Organization", name: siteConfig.businessName, url: siteConfig.siteUrl },
     blogPost: blogPosts.map((post) => ({ "@type": "BlogPosting", headline: post.title, url: `${siteConfig.siteUrl}/blog/${post.slug}`, datePublished: post.publishedAt })),

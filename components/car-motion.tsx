@@ -2,9 +2,7 @@
 
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
-
-const videoUrl = "https://videos.pexels.com/video-files/5309435/5309435-hd_1920_1080_25fps.mp4";
-const posterUrl = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=85";
+import { heroPosterThumbUrl, heroVideoUrl } from "@/lib/media";
 
 export function CarMotion() {
   const reduceMotion = useReducedMotion();
@@ -95,12 +93,12 @@ export function CarMotion() {
             loop
             playsInline
             preload="metadata"
-            poster={posterUrl}
+            poster={heroPosterThumbUrl}
             aria-hidden="true"
             onPlaying={() => setShowPlayButton(false)}
             onError={() => setShowPlayButton(true)}
           >
-            <source src={videoUrl} type="video/mp4" />
+            <source src={heroVideoUrl} type="video/mp4" />
           </video>
         </motion.div>
         <div className="car-showcase__shade" />
@@ -142,7 +140,7 @@ export function CarMotion() {
         <div className="car-showcase__bottomline">
           <span className="car-showcase__pulse" />
           <span>SERVICING · DIAGNOSTICS · REPAIRS</span>
-          <span className="car-showcase__coordinates">LONDON · UK</span>
+          <span className="car-showcase__coordinates">UK</span>
         </div>
       </motion.div>
     </div>

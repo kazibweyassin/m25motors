@@ -13,8 +13,8 @@ import { getBookingHref, hasGoogleProfile, services, siteConfig } from "@/lib/si
 import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata(
-  "Car Repairs, Servicing & Diagnostics in London",
-  "Looking for a car mechanic in London? M25 Motors offers vehicle servicing, diagnostics and repairs. Explore services and contact the garage about your car.",
+  "Car Repairs, Servicing & Diagnostics",
+  "Looking for a car mechanic ? M25 Motors offers vehicle servicing, diagnostics and repairs. Explore services and contact the garage about your car.",
   "/",
 );
 
@@ -56,7 +56,7 @@ export default function HomePage() {
             <StaggeredHeadline />
             <Reveal delay={0.34}>
               <p className="mt-5 max-w-xl text-base leading-7 text-zinc-300 sm:mt-7 sm:text-lg sm:leading-8">
-                Car servicing, diagnostics and repairs for London drivers. Tell M25 Motors what your car needs and get clear next steps from the garage.
+                Car servicing, diagnostics and repairs for UK drivers. Tell M25 Motors what your car needs and get clear next steps from the garage.
               </p>
             </Reveal>
 
@@ -76,7 +76,7 @@ export default function HomePage() {
                 className="inline-flex items-center justify-center gap-3 border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
               >
                 <PhoneCall className="h-4 w-4" />
-                +44 7803 080701
+                {siteConfig.phone}
               </a> : <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/5">Contact the garage</Link>}
             </div>
             </Reveal>
@@ -96,7 +96,7 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="Services"
           title="Care for the miles ahead"
-          description="From scheduled servicing to fault finding and mechanical repairs, explore the work M25 Motors offers to London drivers."
+          description="From scheduled servicing to fault finding and mechanical repairs, explore the work M25 Motors offers drivers."
         />
 
         <div className="mt-8 grid gap-5 sm:mt-12 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -200,8 +200,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Local garage"
-            title="Looking for a car mechanic in London?"
-            description="M25 Motors offers vehicle servicing, diagnostics and repair enquiries for drivers in London and surrounding areas. Check the service list or contact the garage about your vehicle."
+            title="Looking for a car mechanic?"
+            description="M25 Motors offers vehicle servicing, diagnostics and repair enquiries for drivers. Check the service list or contact the garage about your vehicle."
             align="center"
           />
 
@@ -239,7 +239,7 @@ export default function HomePage() {
 
           <div className="overflow-hidden rounded-[1.5rem] border border-zinc-200">
             <div className="flex h-full min-h-[260px] flex-col justify-end bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-800 via-zinc-900 to-zinc-950 p-8 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-300 sm:text-sm">M25 Motors · London</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-300 sm:text-sm">M25 Motors</p>
               <p className="mt-3 max-w-sm text-xl font-bold sm:text-2xl">Straightforward vehicle care, from servicing to repairs.</p>
               <Link href="/services" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">Explore services <ArrowRight className="h-4 w-4" /></Link>
             </div>

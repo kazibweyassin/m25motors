@@ -11,22 +11,26 @@ const socialImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b7
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.businessName} | Car Repairs & Servicing in London`,
+    default: `${siteConfig.businessName} | Car Repairs & Servicing`,
     template: `%s | ${siteConfig.businessName}`,
   },
   description: `${siteConfig.businessName} provides car servicing, vehicle diagnostics and repairs for drivers in ${siteConfig.location}. Explore services and contact the garage to discuss your vehicle.`,
   applicationName: siteConfig.businessName,
   category: "Automotive",
   robots: { index: true, follow: true },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.businessName} | Car Repairs & Servicing in London`,
-    description: `Car servicing, diagnostics and repairs in ${siteConfig.location}. Contact M25 Motors to discuss your vehicle.`,
-    images: [{ url: socialImage, alt: "Car care and repairs from M25 Motors in London" }],
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
   },
-  openGraph: {
-    title: `${siteConfig.businessName} | Car Repairs & Servicing in London`,
-    description: `Car servicing, vehicle diagnostics and repairs in ${siteConfig.location}.`,
+twitter: {
+      card: "summary_large_image",
+      title: `${siteConfig.businessName} | Car Repairs & Servicing`,
+      description: `Car servicing, diagnostics and repairs in ${siteConfig.location}. Contact M25 Motors to discuss your vehicle.`,
+      images: [{ url: socialImage, alt: "Car care and repairs from M25 Motors" }],
+    },
+    openGraph: {
+      title: `${siteConfig.businessName} | Car Repairs & Servicing`,
+      description: `Car servicing, vehicle diagnostics and repairs in ${siteConfig.location}.`,
     url: siteConfig.siteUrl,
     siteName: siteConfig.businessName,
     type: "website",

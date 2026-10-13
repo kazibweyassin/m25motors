@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 import { getBookingHref, services, siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata(
-  "Car Repair Services in London",
+  "Car Repair Services in UK",
   `See car servicing, diagnostics, brake, engine, clutch, MOT preparation and air conditioning repair services from ${siteConfig.businessName} in London.`,
   "/services",
 );
@@ -16,7 +16,7 @@ export default function ServicesPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
       <SectionHeading
         eyebrow="Services"
-        title="Car servicing and repairs in London"
+        title="Car servicing and repairs in UK"
         description="Explore the vehicle services offered by M25 Motors, from routine maintenance and diagnostics to brake, engine, clutch and electrical repairs. Contact the garage to discuss your vehicle and confirm availability."
       />
 

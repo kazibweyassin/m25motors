@@ -5,7 +5,7 @@ import { createPageMetadata } from "@/lib/page-metadata";
 import { getBookingHref, siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata(
-  "About Our London Garage",
+  "About Our Garage",
   `${siteConfig.businessName} provides vehicle servicing, diagnostics and car repairs for drivers in London and surrounding areas.`,
   "/about",
 );
@@ -45,7 +45,7 @@ export default function AboutPage() {
       <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 lg:grid-cols-2">
         <Reveal>
         <div className="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:rounded-[2rem] sm:p-8">
-          <h3 className="text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Vehicle care in London</h3>
+          <h3 className="text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Vehicle care in UK</h3>
           <ul className="mt-6 space-y-4 text-base text-zinc-600">
             <li>• Car servicing and routine maintenance.</li>
             <li>• Diagnostics for warning lights and vehicle faults.</li>

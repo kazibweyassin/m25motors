@@ -3,15 +3,15 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-
-const videoUrl = "https://videos.pexels.com/video-files/5309435/5309435-hd_1920_1080_25fps.mp4";
-const posterUrl = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=85";
+import { heroPosterUrl, heroVideoUrl } from "@/lib/media";
 
 export function HomeHeroBackground() {
   const reduceMotion = useReducedMotion();
   const backgroundVideo = useRef<HTMLVideoElement>(null);
   const [heroVideoVisible, setHeroVideoVisible] = useState(true);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(max-width: 1023px)").matches : true,
+  );
   const { scrollYProgress } = useScroll();
   // Keep enough overscan around the fixed video so parallax never exposes the
   // page background at the top or bottom of the viewport.
@@ -53,7 +53,7 @@ export function HomeHeroBackground() {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <div className="absolute inset-0 lg:hidden">
         <Image
-          src={posterUrl}
+          src={heroPosterUrl}
           alt=""
           fill
           sizes="100vw"
@@ -69,10 +69,10 @@ export function HomeHeroBackground() {
           loop
           playsInline
           preload="none"
-          poster={posterUrl}
+          poster={heroPosterUrl}
           aria-hidden="true"
         >
-          <source src={videoUrl} type="video/mp4" />
+          <source src={heroVideoUrl} type="video/mp4" />
         </video>
       </motion.div>
     </div>
