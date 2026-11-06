@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, MapPin, PhoneCall } from "lucide-react";
 import { notFound } from "next/navigation";
+import { BookingLink } from "@/components/booking-link";
 import { Reveal } from "@/components/reveal";
 import { getBlogPostsForService } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -83,15 +84,9 @@ export default async function ServiceDetailPage({
           <p className="mt-4 max-w-xl text-base leading-7 text-zinc-600 sm:mt-6 sm:text-lg sm:leading-8">{service.description}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a
-              href={getServiceBookingHref(service.title)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-            >
-              {service.ctaLabel}
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <BookingLink href={getServiceBookingHref(service.title)} className="w-full sm:w-auto">
+              {service.ctaLabel} on WhatsApp
+            </BookingLink>
             {getPhoneHref() ? <a
               href={getPhoneHref()}
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-300"

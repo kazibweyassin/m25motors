@@ -1,4 +1,5 @@
-import { ArrowRight, ClipboardCheck, MessageSquareText, Wrench, ScanSearch } from "lucide-react";
+import { ClipboardCheck, MessageSquareText, Wrench, ScanSearch } from "lucide-react";
+import { BookingLink } from "@/components/booking-link";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { createPageMetadata } from "@/lib/page-metadata";
@@ -85,15 +86,7 @@ export default function AboutPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Need a repair?</p>
             <h3 className="mt-3 text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Tell us what the vehicle needs</h3>
           </div>
-          <a
-            href={getBookingHref()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700 sm:w-auto"
-          >
-            Request a quote
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          <BookingLink href={getBookingHref()} className="w-full sm:w-auto" />
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import "./globals.css";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { MobileActionBar } from "@/components/mobile-action-bar";
-import { WhatsAppWidget } from "@/components/whatsapp-widget";
 import { services, siteConfig } from "@/lib/site";
 
 const socialImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&h=630&q=85";
@@ -102,7 +101,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main>{children}</main>
         <Footer />
         <MobileActionBar />
-        <WhatsAppWidget />
       </body>
     </html>
   );

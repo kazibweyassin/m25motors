@@ -28,7 +28,7 @@ export function StaggeredHeadline() {
 
   return (
     <motion.h1
-      className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+      className="max-w-3xl text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-8xl"
       aria-label="Car repairs, without the guesswork."
       aria-live="off"
       variants={containerVariants}

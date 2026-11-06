@@ -1,4 +1,4 @@
-import { PhoneCall, CalendarDays } from "lucide-react";
+import { PhoneCall, MessageCircleMore } from "lucide-react";
 import { getBookingHref, getPhoneHref } from "@/lib/site";
 
 export function MobileActionBar() {
@@ -17,11 +17,11 @@ export function MobileActionBar() {
           href={getBookingHref()}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Book an appointment with M25 Motors"
+          aria-label="Book on WhatsApp with M25 Motors"
           className="flex min-h-12 items-center justify-center gap-2 rounded-xl bg-red-600 px-3 py-3 text-sm font-semibold text-white shadow-sm transition active:scale-[0.98]"
         >
-          <CalendarDays className="h-4 w-4" />
-          Book
+          <MessageCircleMore className="h-4 w-4" />
+          WhatsApp
         </a>
       </div>
     </nav>

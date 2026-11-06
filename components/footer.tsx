@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, PhoneCall, Mail, Clock3, MessageCircleMore } from "lucide-react";
-import { getWhatsAppHref, siteConfig } from "@/lib/site";
+import { getGoogleMapsHref, getWhatsAppHref, siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -34,6 +34,7 @@ export function Footer() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Contact</p>
           <ul className="mt-4 space-y-3 text-sm text-zinc-300">
             {siteConfig.address ? <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 text-red-500" /> {siteConfig.address}</li> : null}
+            {getGoogleMapsHref() ? <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-red-500" /> <a href={getGoogleMapsHref()} target="_blank" rel="noopener noreferrer" className="hover:text-white">Google Maps</a></li> : null}
             {siteConfig.phone ? <li className="flex items-center gap-3"><PhoneCall className="h-4 w-4 text-red-500" /> <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="hover:text-white">{siteConfig.phone}</a></li> : null}
             {siteConfig.email ? <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-red-500" /> <a href={`mailto:${siteConfig.email}`} className="hover:text-white">{siteConfig.email}</a></li> : null}
             {siteConfig.openingHours ? <li className="flex items-center gap-3"><Clock3 className="h-4 w-4 text-red-500" /> {siteConfig.openingHours}</li> : null}

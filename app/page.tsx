@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/page-metadata";
-import { ArrowRight, BadgeCheck, CalendarDays, ClipboardCheck, Clock3, MapPin, MessageSquareText, PhoneCall, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, BadgeCheck, CalendarDays, ClipboardCheck, MessageSquareText, PhoneCall } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { CarMotion } from "@/components/car-motion";
@@ -9,7 +9,9 @@ import { HomeHeroBackground } from "@/components/home-hero-background";
 import { StaggeredHeadline } from "@/components/staggered-headline";
 import { Reveal } from "@/components/reveal";
 import { BlogCard } from "@/components/blog-card";
-import { getBookingHref, hasGoogleProfile, services, siteConfig } from "@/lib/site";
+import { BookingLink } from "@/components/booking-link";
+import { WorkshopMap } from "@/components/workshop-map";
+import { getBookingHref, services, siteConfig } from "@/lib/site";
 import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata(
@@ -45,43 +47,35 @@ export default function HomePage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-zinc-950/55 via-zinc-950/30 to-zinc-950/10" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-950/10 via-transparent to-zinc-950/45" />
 
-        <div className="relative z-10 mx-auto grid min-h-0 max-w-[92rem] items-center gap-6 px-4 py-8 sm:gap-8 sm:px-6 sm:py-14 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-10 lg:py-16">
+        <div className="relative z-10 mx-auto grid min-h-0 max-w-[92rem] items-center gap-5 px-4 py-6 sm:gap-8 sm:px-6 sm:py-14 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-10 lg:py-16">
           <div className="max-w-2xl py-1 sm:py-4 lg:py-10">
             <Reveal delay={0.12}>
-              <p className="mb-5 inline-flex items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.24em] text-red-300 sm:mb-7 sm:text-xs sm:tracking-[0.28em]">
+              <p className="mb-3 inline-flex items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.24em] text-red-300 sm:mb-7 sm:text-xs sm:tracking-[0.28em]">
                 <BadgeCheck className="h-3.5 w-3.5 text-red-400" />
                 M25 Motors <span className="text-zinc-500">/</span> London
               </p>
             </Reveal>
             <StaggeredHeadline />
             <Reveal delay={0.34}>
-              <p className="mt-5 max-w-xl text-base leading-7 text-zinc-300 sm:mt-7 sm:text-lg sm:leading-8">
+              <p className="mt-4 max-w-xl text-base leading-7 text-zinc-300 sm:mt-7 sm:text-lg sm:leading-8">
                 Car servicing, diagnostics and repairs for UK drivers. Tell M25 Motors what your car needs and get clear next steps from the garage.
               </p>
             </Reveal>
 
             <Reveal delay={0.46}>
-            <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
-              <a
-                href={getBookingHref()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-red-600 px-6 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-red-700"
-              >
-                Talk to the garage
-                <ArrowRight className="h-4 w-4" />
-              </a>
+            <div className="mt-5 flex flex-col gap-3 sm:mt-9 sm:flex-row">
+              <BookingLink href={getBookingHref()} className="w-full sm:w-auto" />
               {siteConfig.phone ? <a
                 href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                className="inline-flex items-center justify-center gap-3 border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-white/60 hover:bg-white/5"
               >
                 <PhoneCall className="h-4 w-4" />
                 {siteConfig.phone}
-              </a> : <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-white/20 px-6 py-4 text-sm font-semibold text-white transition-colors hover:bg-white/5">Contact the garage</Link>}
+              </a> : <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">Contact the garage</Link>}
             </div>
             </Reveal>
 
-            <div className="mt-9 grid max-w-xl grid-cols-3 border-t border-white/15 pt-4 sm:mt-12 sm:pt-5">
+            <div className="mt-12 hidden max-w-xl grid-cols-3 border-t border-white/15 pt-5 sm:grid">
               <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">01 / CARE</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Routine servicing</p></div>
               <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">02 / FIND</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Vehicle diagnostics</p></div>
               <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">03 / FIX</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Mechanical repairs</p></div>
@@ -93,14 +87,19 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <SectionHeading
-          eyebrow="Services"
-          title="Care for the miles ahead"
-          description="From scheduled servicing to fault finding and mechanical repairs, explore the work M25 Motors offers drivers."
-        />
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeading
+            eyebrow="Services"
+            title="Care for the miles ahead"
+            description="From scheduled servicing to fault finding and mechanical repairs, explore the work M25 Motors offers drivers."
+          />
+          <Link href="/services" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-700 transition hover:text-red-900">
+            All services <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
 
         <div className="mt-8 grid gap-5 sm:mt-12 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {services.slice(0, 6).map((service, index) => (
+          {services.map((service, index) => (
             <Reveal key={service.slug} delay={index * 0.08} lift>
               <ServiceCard service={service} />
             </Reveal>
@@ -138,9 +137,7 @@ export default function HomePage() {
               <h2 className="text-4xl font-semibold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl">A clearer route from message to <span className="font-light italic text-red-300">workshop.</span></h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg sm:leading-8">Share your vehicle details, agree the next step, then visit at a time arranged with the garage.</p>
             </div>
-            <a href={getBookingHref()} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center gap-3 self-start rounded-full bg-red-600 px-6 py-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-red-700 lg:self-auto">
-              Start your booking <ArrowRight className="h-4 w-4" />
-            </a>
+            <BookingLink href={getBookingHref()} className="self-start lg:self-auto" />
           </div>
 
           <div className="relative mt-10 grid gap-3 sm:mt-14 sm:gap-4 md:grid-cols-3 md:gap-5">
@@ -162,88 +159,13 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <SectionHeading
-              eyebrow="Why choose us"
-              title="Vehicle care with clear next steps"
-            description="From routine maintenance to fault finding, explore the work M25 Motors offers and get in touch to discuss the symptoms, vehicle and repair options."
-            />
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
-            <Reveal lift><div className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-sm">
-              <ShieldCheck className="h-8 w-8 text-red-600" />
-              <h3 className="mt-4 text-xl font-bold text-zinc-900">Clear communication</h3>
-              <p className="mt-3 text-base text-zinc-600">Understand the findings and agree the recommended work before repairs proceed.</p>
-            </div></Reveal>
-            <Reveal delay={0.08} lift><div className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-sm">
-              <Wrench className="h-8 w-8 text-red-600" />
-              <h3 className="mt-4 text-xl font-bold text-zinc-900">Practical workmanship</h3>
-              <p className="mt-3 text-base text-zinc-600">Discuss servicing, diagnostics and repair options for your vehicle with the garage.</p>
-            </div></Reveal>
-            <Reveal delay={0.16} lift><div className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-sm">
-              <CalendarDays className="h-8 w-8 text-red-600" />
-              <h3 className="mt-4 text-xl font-bold text-zinc-900">Convenient appointments</h3>
-              <p className="mt-3 text-base text-zinc-600">Contact M25 Motors to ask about availability and arrange a suitable appointment.</p>
-            </div></Reveal>
-            <Reveal delay={0.24} lift><div className="rounded-[2rem] border border-zinc-200 bg-white p-6 shadow-sm">
-              <PhoneCall className="h-8 w-8 text-red-600" />
-              <h3 className="mt-4 text-xl font-bold text-zinc-900">Direct contact</h3>
-              <p className="mt-3 text-base text-zinc-600">Send an enquiry with your vehicle details and a description of the issue.</p>
-            </div></Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-zinc-100/70 py-14 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Local garage"
-            title="Looking for a car mechanic?"
-            description="M25 Motors offers vehicle servicing, diagnostics and repair enquiries for drivers. Check the service list or contact the garage about your vehicle."
-            align="center"
-          />
-
-          <div className="mt-8 rounded-[1.5rem] border border-dashed border-zinc-300 bg-white p-5 text-center shadow-sm sm:mt-10 sm:rounded-[2rem] sm:p-8">
-            <p className="text-base leading-7 text-zinc-600 sm:text-lg">
-              Need help with a warning light, brakes, engine fault or routine service? Browse the service pages for details, then contact M25 Motors to discuss your car.
-            </p>
-            {hasGoogleProfile(siteConfig.googleBusinessProfile) ? (
-              <a
-                href={siteConfig.googleBusinessProfile}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center rounded-full bg-zinc-900 px-5 py-3 text-sm font-semibold text-white hover:bg-zinc-800"
-              >
-                View Google Business Profile
-              </a>
-            ) : null}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-        <div className="grid gap-6 rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:gap-10 sm:rounded-[2rem] sm:p-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <SectionHeading
-              eyebrow="Location"
-              title="Planning a visit to the workshop?"
-            />
-            <ul className="mt-6 space-y-4 text-base text-zinc-600">
-              <li className="flex items-start gap-3"><MapPin className="mt-1 h-5 w-5 text-red-600" /> Servicing drivers in {siteConfig.serviceArea}.</li>
-              {siteConfig.openingHours ? <li className="flex items-start gap-3"><Clock3 className="mt-1 h-5 w-5 text-red-600" /> {siteConfig.openingHours}</li> : null}
-              {siteConfig.phone ? <li className="flex items-start gap-3"><PhoneCall className="mt-1 h-5 w-5 text-red-600" /> {siteConfig.phone}</li> : null}
-            </ul>
-          </div>
-
-          <div className="overflow-hidden rounded-[1.5rem] border border-zinc-200">
-            <div className="flex h-full min-h-[260px] flex-col justify-end bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-red-800 via-zinc-900 to-zinc-950 p-8 text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-300 sm:text-sm">M25 Motors</p>
-              <p className="mt-3 max-w-sm text-xl font-bold sm:text-2xl">Straightforward vehicle care, from servicing to repairs.</p>
-              <Link href="/services" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">Explore services <ArrowRight className="h-4 w-4" /></Link>
-            </div>
-          </div>
+        <SectionHeading
+          eyebrow="Directions"
+          title="Find the garage"
+          description="The map shows the M25 Motors & Repair Ltd listing. Open it in Google Maps for directions."
+        />
+        <div className="mt-8 sm:mt-12">
+          <WorkshopMap />
         </div>
       </section>
 
@@ -257,17 +179,10 @@ export default function HomePage() {
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href={getBookingHref()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-              >
-                Book an appointment
-              </a>
+              <BookingLink href={getBookingHref()} className="w-full sm:w-auto" />
               {siteConfig.phone ? <a
                 href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5"
               >
                 Call the garage
               </a> : <Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">Contact the garage</Link>}

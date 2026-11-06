@@ -10,7 +10,10 @@ export const siteConfig = {
   email: "",
   whatsapp: "+44 7803 080701",
   openingHours: "",
-  googleBusinessProfile: "",
+  // Confirmed Google Maps listing for M25 Motors & Repair Ltd.
+  googleBusinessProfile: "https://maps.app.goo.gl/k42XEiPrXQeHWEJK9",
+  mapLatitude: 51.5723655,
+  mapLongitude: 0.4857802,
   siteUrl: "https://m25motors.co.uk",
   serviceArea: "London and surrounding areas",
 };
@@ -269,4 +272,14 @@ export function getGoogleMapsHref() {
     : siteConfig.address
       ? `https://maps.google.com/?q=${encodeURIComponent(siteConfig.address)}`
       : undefined;
+}
+
+export function getMapEmbedUrl() {
+  const { mapLatitude: lat, mapLongitude: lng } = siteConfig;
+  if (!lat || !lng) return undefined;
+  // Google's embed endpoint refuses to be framed. The pin is the one from the confirmed Maps listing.
+  const pad = 0.008;
+  const round = (value: number) => Number(value.toFixed(6));
+  const bbox = [round(lng - pad), round(lat - pad), round(lng + pad), round(lat + pad)].join(",");
+  return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
 }

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpenCheck, ExternalLink } from "lucide-react";
+import { BookOpenCheck, ExternalLink } from "lucide-react";
 import { BlogCard } from "@/components/blog-card";
+import { BookingLink } from "@/components/booking-link";
 import { SectionHeading } from "@/components/section-heading";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { blogPosts } from "@/lib/blog";
-import { siteConfig } from "@/lib/site";
+import { getBookingHref, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata(
   "Used Car Reviews, Car Repair & Maintenance Guides",
@@ -60,7 +61,7 @@ export default function BlogPage() {
       <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-20 lg:px-8">
         <div className="flex flex-col gap-6 rounded-[1.5rem] bg-white p-5 shadow-sm sm:rounded-[2rem] sm:p-8 md:flex-row md:items-center md:justify-between">
           <div><p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Need help with your car?</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">Tell the garage what you have noticed</h2><p className="mt-2 max-w-xl text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">Share the vehicle details and symptoms to discuss an inspection or repair enquiry.</p></div>
-          <Link href="/contact" className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-2 rounded-full bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 sm:w-auto">Contact M25 Motors <ArrowRight aria-hidden="true" className="h-4 w-4" /></Link>
+          <BookingLink href={getBookingHref()} className="w-full shrink-0 sm:w-auto" />
         </div>
       </section>
     </div>

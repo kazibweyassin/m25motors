@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, PhoneCall, X } from "lucide-react";
+import { BookingLink } from "@/components/booking-link";
 import { getBookingHref, getPhoneHref, siteConfig } from "@/lib/site";
 
 const navItems = [
@@ -52,14 +53,7 @@ export function Header() {
             <PhoneCall className="h-4 w-4" />
             {siteConfig.phone}
           </a> : null}
-          <a
-            href={getBookingHref()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-          >
-            Book a repair
-          </a>
+          <BookingLink href={getBookingHref()} size="compact" />
         </div>
 
         <button

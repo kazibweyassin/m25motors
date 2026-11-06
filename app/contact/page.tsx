@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { Clock3, Mail, MapPin, MessageCircleMore, PhoneCall } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { SectionHeading } from "@/components/section-heading";
+import { WorkshopMap } from "@/components/workshop-map";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { getWhatsAppHref, siteConfig } from "@/lib/site";
 
@@ -32,22 +32,13 @@ export default function ContactPage() {
               {siteConfig.openingHours ? <li className="flex items-start gap-3"><Clock3 className="mt-1 h-5 w-5 text-red-600" /> {siteConfig.openingHours}</li> : null}
             </ul>
           </div>
-
-          {siteConfig.address ? <div className="rounded-[2rem] border border-zinc-200 bg-zinc-900 p-6 text-white shadow-sm">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-400">Directions</p>
-            <p className="mt-4 text-xl font-bold">Visit the workshop in {siteConfig.location}</p>
-            <Link
-              href={`https://maps.google.com/?q=${encodeURIComponent(siteConfig.address)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-            >
-              Get directions
-            </Link>
-          </div> : null}
         </div>
 
         <ContactForm />
+      </div>
+
+      <div className="mt-8 sm:mt-12">
+        <WorkshopMap />
       </div>
     </div>
   );

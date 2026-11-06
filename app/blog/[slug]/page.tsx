@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock3, ExternalLink } from "lucide-react";
+import { BookingLink } from "@/components/booking-link";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog";
 import { getServiceBySlug, getServiceBookingHref, getWhatsAppHref, siteConfig } from "@/lib/site";
@@ -151,7 +152,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-300">{isUsedCarReview ? "Before you buy" : "Need an inspection?"}</p>
               <h2 className="mt-3 text-2xl font-semibold leading-tight">{isUsedCarReview ? "Ask about a pre-purchase check" : "Talk through the symptoms"}</h2>
               <p className="mt-3 text-sm leading-6 text-zinc-300">{isUsedCarReview ? "Ask M25 Motors whether it can help check this vehicle before you commit; confirm availability and what the check includes." : "Share your vehicle details and what you have noticed to discuss the right next step with the garage."}</p>
-              <a href={bookingHref ?? "/contact"} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-700">{isUsedCarReview ? "Ask about this car" : "Discuss your car"} <ArrowRight aria-hidden="true" className="h-4 w-4" /></a>
+              <BookingLink href={bookingHref ?? "/contact"} className="mt-5 w-full">{isUsedCarReview ? "Ask about this car on WhatsApp" : "Book on WhatsApp"}</BookingLink>
             </div>
             {related.length ? <div className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6"><h2 className="font-semibold text-zinc-900">Related services</h2><ul className="mt-3 space-y-3">{related.map(({ title, slug }) => <li key={slug}><Link href={`/services/${slug}`} className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-zinc-700 transition hover:text-red-700">{title}<ArrowRight aria-hidden="true" className="h-3.5 w-3.5" /></Link></li>)}</ul></div> : null}
             <Link href="/blog" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-zinc-600 transition hover:text-red-700"><ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to the blog</Link>

@@ -5,6 +5,7 @@ import { CalendarRange, MessageCircleMore, MessageSquareText } from "lucide-reac
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Link from "next/link";
+import { bookingButtonClass } from "@/components/booking-link";
 import { getWhatsAppHref } from "@/lib/site";
 
 const contactSchema = z.object({
@@ -191,10 +192,10 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-base font-semibold text-white transition-colors hover:bg-[#1fbd5b] sm:w-auto"
+        className={`${bookingButtonClass} w-full sm:w-auto`}
       >
-        <MessageCircleMore className="h-4 w-4" />
-        Continue to WhatsApp
+        <MessageCircleMore className="h-4 w-4" aria-hidden="true" />
+        Continue on WhatsApp
       </button>
       <p className="text-xs leading-5 text-zinc-500">
         Continuing opens WhatsApp with the details above. Review the message before sending. See our <Link href="/privacy" className="underline underline-offset-2 hover:text-zinc-900">privacy information</Link>.
