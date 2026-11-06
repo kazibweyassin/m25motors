@@ -10,29 +10,34 @@ const socialImage = "https://images.unsplash.com/photo-1503376780353-7e6692767b7
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
+  alternates: { canonical: "/" },
   title: {
     default: `${siteConfig.businessName} | Car Repairs & Servicing`,
     template: `%s | ${siteConfig.businessName}`,
   },
   description: `${siteConfig.businessName} provides car servicing, vehicle diagnostics and repairs for drivers in ${siteConfig.location}. Explore services and contact the garage to discuss your vehicle.`,
   applicationName: siteConfig.businessName,
+  authors: [{ name: siteConfig.businessName, url: siteConfig.siteUrl }],
+  creator: siteConfig.businessName,
+  publisher: siteConfig.businessName,
   category: "Automotive",
-  robots: { index: true, follow: true },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-twitter: {
-      card: "summary_large_image",
-      title: `${siteConfig.businessName} | Car Repairs & Servicing`,
-      description: `Car servicing, diagnostics and repairs in ${siteConfig.location}. Contact M25 Motors to discuss your vehicle.`,
-      images: [{ url: socialImage, alt: "Car care and repairs from M25 Motors" }],
-    },
-    openGraph: {
-      title: `${siteConfig.businessName} | Car Repairs & Servicing`,
-      description: `Car servicing, vehicle diagnostics and repairs in ${siteConfig.location}.`,
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.businessName} | Car Repairs & Servicing`,
+    description: `Car servicing, diagnostics and repairs in ${siteConfig.location}. Contact M25 Motors to discuss your vehicle.`,
+    images: [{ url: socialImage, alt: "Car care and repairs from M25 Motors" }],
+  },
+  openGraph: {
+    title: `${siteConfig.businessName} | Car Repairs & Servicing`,
+    description: `Car servicing, vehicle diagnostics and repairs in ${siteConfig.location}.`,
     url: siteConfig.siteUrl,
     siteName: siteConfig.businessName,
+    locale: "en_GB",
     type: "website",
     images: [{ url: socialImage, width: 1200, height: 630, alt: "Car care and repairs from M25 Motors in London" }],
   },
@@ -46,22 +51,47 @@ twitter: {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const businessSchema = {
     "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    name: siteConfig.businessName,
-    url: siteConfig.siteUrl,
-    description: `${siteConfig.businessName} provides car servicing, vehicle diagnostics and repair services in ${siteConfig.location}.`,
-    areaServed: siteConfig.serviceArea,
-    image: socialImage,
-    logo: `${siteConfig.siteUrl}/m25-mark.png`,
-    ...(siteConfig.email ? { email: siteConfig.email } : {}),
-    ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Vehicle repair and maintenance services",
-      itemListElement: [
-        ...new Set(services.map((service) => service.title)),
-      ].map((name) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name } })),
-    },
+    "@graph": [
+      {
+        "@type": "AutoRepair",
+        "@id": `${siteConfig.siteUrl}/#business`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        description: `${siteConfig.businessName} provides car servicing, vehicle diagnostics and repair services in ${siteConfig.location}.`,
+        areaServed: siteConfig.serviceArea,
+        image: socialImage,
+        logo: `${siteConfig.siteUrl}/m25-mark.png`,
+        knowsAbout: services.map((service) => service.title),
+        ...(siteConfig.email ? { email: siteConfig.email } : {}),
+        ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
+        ...(siteConfig.address ? { address: siteConfig.address } : {}),
+        ...(siteConfig.openingHours ? { openingHours: siteConfig.openingHours } : {}),
+        ...(siteConfig.googleBusinessProfile ? { sameAs: [siteConfig.googleBusinessProfile] } : {}),
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: siteConfig.phone,
+          contactType: "customer service",
+          areaServed: "GB",
+          availableLanguage: "en-GB",
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Vehicle repair and maintenance services",
+          itemListElement: [...new Set(services.map((service) => service.title))].map((name) => ({
+            "@type": "Offer",
+            itemOffered: { "@type": "Service", name },
+          })),
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.siteUrl}/#website`,
+        name: siteConfig.businessName,
+        url: siteConfig.siteUrl,
+        publisher: { "@id": `${siteConfig.siteUrl}/#business` },
+        inLanguage: "en-GB",
+      },
+    ],
   };
 
   return (

@@ -11,11 +11,13 @@ export function createPageMetadata(title: string, description: string, path: str
     title,
     description,
     alternates: { canonical: path },
+    robots: { index: true, follow: true },
     openGraph: {
       title: shareTitle,
       description,
       url,
       siteName: siteConfig.businessName,
+      locale: "en_GB",
       type: "website",
       images: [{ url: socialImage, width: 1200, height: 630, alt: "Car care and repairs from M25 Motors" }],
     },

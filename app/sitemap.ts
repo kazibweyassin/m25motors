@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPages = [
     {
       url: `${siteConfig.siteUrl}/blog`,
+      lastModified: blogPosts.reduce((latest, post) => post.updatedAt > latest ? post.updatedAt : latest, blogPosts[0]?.updatedAt ?? new Date().toISOString()),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
