@@ -19,7 +19,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           className="object-cover transition duration-700 group-hover:scale-110 group-hover:brightness-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-zinc-950/10" />
-        <p className="absolute bottom-4 left-5 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/80">M25 Motors <span className="px-1 text-red-300">/</span> London</p>
+        <p className="absolute bottom-4 left-5 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-white/80">M25 Motors <span className="px-1 text-red-300">/</span> Basildon</p>
       </div>
       <div className="space-y-3 p-5 sm:space-y-4 sm:p-7">
         <div className="flex items-center justify-between gap-4">
@@ -30,7 +30,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           href={`/services/${service.slug}`}
           className="inline-flex items-center gap-2 border-t border-zinc-100 pt-4 text-sm font-bold text-red-700 transition-colors hover:text-red-900"
         >
-          Explore service
+          {`View ${service.title.toLowerCase()}`}
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>

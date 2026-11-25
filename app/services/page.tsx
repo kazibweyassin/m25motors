@@ -6,18 +6,32 @@ import { Reveal } from "@/components/reveal";
 import { getBookingHref, services, siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata(
-  "Car Repair Services in UK",
-  `See car servicing, diagnostics, brake, engine, clutch, MOT preparation and air conditioning repair services from ${siteConfig.businessName} in London.`,
+  `Car Repairs & Servicing in ${siteConfig.location}`,
+  `Car servicing, diagnostics, brakes, engines, clutches, MOT preparation and air conditioning at ${siteConfig.businessName} in ${siteConfig.location}, ${siteConfig.region}.`,
   "/services",
 );
 
 export default function ServicesPage() {
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Car repair services in ${siteConfig.location}`,
+    itemListElement: services.map((service, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: service.title,
+      url: `${siteConfig.siteUrl}/services/${service.slug}`,
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList).replace(/</g, "\\u003c") }} />
       <SectionHeading
+        as="h1"
         eyebrow="Services"
-        title="Car servicing and repairs in UK"
-        description="Explore the vehicle services offered by M25 Motors, from routine maintenance and diagnostics to brake, engine, clutch and electrical repairs. Contact the garage to discuss your vehicle and confirm availability."
+        title={`Car servicing and repairs in ${siteConfig.location}`}
+        description={`Servicing, diagnostics, brakes, engines, clutches, MOT preparation and electrical repairs at ${siteConfig.legalName} on Timberlog Lane. Contact the garage to confirm it can help with your vehicle.`}
       />
 
       <div className="mt-8 grid gap-5 sm:mt-12 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">

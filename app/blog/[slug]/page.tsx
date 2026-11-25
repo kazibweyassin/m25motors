@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, CalendarDays, Clock3, ExternalLink } from "lucid
 import { BookingLink } from "@/components/booking-link";
 import { createPageMetadata } from "@/lib/page-metadata";
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog";
-import { getServiceBySlug, getServiceBookingHref, getWhatsAppHref, siteConfig } from "@/lib/site";
+import { getPostalAddress, getServiceBySlug, getServiceBookingHref, getWhatsAppHref, siteConfig } from "@/lib/site";
 
 type BlogPostPageProps = { params: Promise<{ slug: string }> };
 
@@ -63,9 +63,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     inLanguage: "en-GB",
     articleSection: post.category,
     ...(post.model ? { keywords: [post.model, "used car buying guide", "used car review UK"] } : {}),
-    author: { "@type": "Organization", name: siteConfig.businessName, url: siteConfig.siteUrl },
-    publisher: { "@type": "Organization", name: siteConfig.businessName, url: siteConfig.siteUrl, logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/m25-mark.png` } },
+    author: { "@type": "AutoRepair", "@id": `${siteConfig.siteUrl}/#business`, name: siteConfig.businessName, url: siteConfig.siteUrl, address: getPostalAddress() },
+    publisher: { "@type": "AutoRepair", "@id": `${siteConfig.siteUrl}/#business`, name: siteConfig.businessName, url: siteConfig.siteUrl, logo: { "@type": "ImageObject", url: `${siteConfig.siteUrl}/m25-mark.png` }, address: getPostalAddress() },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.questions.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
   };
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -86,6 +95,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <div className="min-h-screen bg-stone-100">
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       <div className="mx-auto max-w-7xl px-4 pb-14 pt-8 sm:px-6 sm:pb-20 sm:pt-12 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-8 text-sm text-zinc-500"><Link href="/" className="transition-colors hover:text-red-700">Home</Link><span aria-hidden="true" className="px-2">/</span><Link href="/blog" className="transition-colors hover:text-red-700">Blog</Link><span aria-hidden="true" className="px-2">/</span><span aria-current="page" className="text-zinc-800">{post.category}</span></nav>
 
@@ -151,7 +161,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="rounded-2xl bg-zinc-950 p-5 text-white sm:p-6">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-300">{isUsedCarReview ? "Before you buy" : "Need an inspection?"}</p>
               <h2 className="mt-3 text-2xl font-semibold leading-tight">{isUsedCarReview ? "Ask about a pre-purchase check" : "Talk through the symptoms"}</h2>
-              <p className="mt-3 text-sm leading-6 text-zinc-300">{isUsedCarReview ? "Ask M25 Motors whether it can help check this vehicle before you commit; confirm availability and what the check includes." : "Share your vehicle details and what you have noticed to discuss the right next step with the garage."}</p>
+              <p className="mt-3 text-sm leading-6 text-zinc-300">{isUsedCarReview ? `Ask ${siteConfig.businessName} in ${siteConfig.location} whether it can help check this vehicle before you commit. Confirm availability and what the check includes.` : `Share your vehicle details with the ${siteConfig.location} garage and talk through what you have noticed.`}</p>
               <BookingLink href={bookingHref ?? "/contact"} className="mt-5 w-full">{isUsedCarReview ? "Ask about this car on WhatsApp" : "Book on WhatsApp"}</BookingLink>
             </div>
             {related.length ? <div className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6"><h2 className="font-semibold text-zinc-900">Related services</h2><ul className="mt-3 space-y-3">{related.map(({ title, slug }) => <li key={slug}><Link href={`/services/${slug}`} className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-zinc-700 transition hover:text-red-700">{title}<ArrowRight aria-hidden="true" className="h-3.5 w-3.5" /></Link></li>)}</ul></div> : null}

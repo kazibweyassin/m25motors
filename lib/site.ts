@@ -2,9 +2,14 @@ export const GOOGLE_PROFILE_PLACEHOLDER = "[PROFILE URL]";
 
 export const siteConfig = {
   businessName: "M25 Motors",
-  location: "London",
-  // Add a street address only after the business confirms it.
-  address: "",
+  legalName: "M25 Motors & Repair Ltd",
+  slogan: "Car repairs, without the guesswork.",
+  location: "Basildon",
+  region: "Essex",
+  streetAddress: "Land adjacent, Unit 7 Timberlog Ln",
+  address: "Land adjacent, Unit 7 Timberlog Ln, Basildon SS14 1PE, United Kingdom",
+  postalCode: "SS14 1PE",
+  addressCountry: "GB",
   phone: "+44 7803 080701",
   // Leave blank until the business confirms this mailbox is monitored.
   email: "",
@@ -15,8 +20,81 @@ export const siteConfig = {
   mapLatitude: 51.5723655,
   mapLongitude: 0.4857802,
   siteUrl: "https://m25motors.co.uk",
-  serviceArea: "London and surrounding areas",
+  serviceArea: "Basildon, Essex and nearby towns",
 };
+
+export const nearbyTowns = [
+  "Laindon",
+  "Pitsea",
+  "Vange",
+  "Langdon Hills",
+  "Wickford",
+  "Billericay",
+  "Stanford-le-Hope",
+  "Corringham",
+  "Canvey Island",
+  "Rayleigh",
+  "South Benfleet",
+  "Brentwood",
+  "Grays",
+  "Southend-on-Sea",
+] as const;
+
+export const garageFaqs = [
+  {
+    question: "Where is M25 Motors?",
+    answer:
+      "M25 Motors & Repair Ltd is at Land adjacent, Unit 7 Timberlog Lane, Basildon, SS14 1PE. The workshop is in Basildon, Essex.",
+  },
+  {
+    question: "Which areas does M25 Motors cover?",
+    answer:
+      "The garage is in Basildon and works with drivers from Laindon, Pitsea, Wickford, Billericay, Stanford-le-Hope, Canvey Island, Rayleigh, Brentwood, Grays, Southend-on-Sea and other nearby Essex towns. Call or send a WhatsApp message to confirm it can help with your vehicle.",
+  },
+  {
+    question: "How do I book a car repair or service?",
+    answer:
+      "Send the make, model, registration and what the car is doing by WhatsApp, or call +44 7803 080701. The garage confirms a time before you visit.",
+  },
+  {
+    question: "Does M25 Motors carry out MOT tests?",
+    answer:
+      "M25 Motors prepares vehicles and carries out repairs that can affect an MOT. The official result is decided by an authorised test. Ask the garage what it can check before your test date. A preparation visit is not a guaranteed pass.",
+  },
+  {
+    question: "What should I tell the garage about a fault?",
+    answer:
+      "Share the registration, make and model, the symptoms, when they started, and any warning lights. The garage uses that to suggest the right inspection before any repair work begins.",
+  },
+] as const;
+
+export function formatTownList(towns: readonly string[]) {
+  if (towns.length <= 1) return towns[0] ?? "";
+  return `${towns.slice(0, -1).join(", ")} and ${towns[towns.length - 1]}`;
+}
+
+export function getAreaServed() {
+  return [
+    {
+      "@type": "City",
+      name: siteConfig.location,
+      containedInPlace: { "@type": "AdministrativeArea", name: siteConfig.region },
+    },
+    { "@type": "AdministrativeArea", name: siteConfig.region },
+    ...nearbyTowns.map((name) => ({ "@type": "City", name })),
+  ];
+}
+
+export function getPostalAddress() {
+  return {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.streetAddress,
+    addressLocality: siteConfig.location,
+    addressRegion: siteConfig.region,
+    postalCode: siteConfig.postalCode,
+    addressCountry: siteConfig.addressCountry,
+  };
+}
 
 export type Service = {
   slug: string;

@@ -1,21 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, PhoneCall, Mail, Clock3, MessageCircleMore } from "lucide-react";
-import { getGoogleMapsHref, getWhatsAppHref, siteConfig } from "@/lib/site";
+import { getGoogleMapsHref, getWhatsAppHref, services, siteConfig } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="border-t border-zinc-200 bg-zinc-950/80 text-zinc-200">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.2fr_0.8fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_0.9fr_0.7fr_1fr] lg:px-8">
         <div>
           <div className="flex items-center">
             <div className="relative h-12 w-28 overflow-hidden rounded-xl bg-white px-2 ring-1 ring-zinc-700">
-              <Image src="/m25-mark.png" alt="M25" fill sizes="112px" className="object-contain p-2" />
+              <Image src="/m25-mark.png" alt="M25 Motors" fill sizes="112px" className="object-contain p-2" />
             </div>
           </div>
           <p className="mt-4 max-w-md text-sm leading-7 text-zinc-300">
-            Vehicle servicing, diagnostics and repair enquiries for drivers in London and surrounding areas.
+            Car servicing, diagnostics and repairs at {siteConfig.legalName} in {siteConfig.location}, {siteConfig.region}.
           </p>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Services</p>
+          <ul className="mt-4 space-y-3 text-sm text-zinc-300">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link href={`/services/${service.slug}`} className="hover:text-white">
+                  {service.title} in {siteConfig.location}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>

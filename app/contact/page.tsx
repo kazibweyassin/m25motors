@@ -6,8 +6,8 @@ import { createPageMetadata } from "@/lib/page-metadata";
 import { getWhatsAppHref, siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata(
-  "Contact a London Mechanic",
-  `Contact ${siteConfig.businessName} in London about car servicing, diagnostics, repairs or appointment availability.`,
+  `Contact a ${siteConfig.location} Mechanic`,
+  `Contact ${siteConfig.businessName} in ${siteConfig.location} about car servicing, diagnostics or repairs. Workshop: Timberlog Lane, ${siteConfig.postalCode}. Call or WhatsApp to arrange a visit.`,
   "/contact",
 );
 
@@ -15,9 +15,10 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
           <SectionHeading
+        as="h1"
         eyebrow="Contact & booking"
-        title="Talk to the garage about your vehicle"
-        description="Send M25 Motors your vehicle details and preferred appointment date on WhatsApp. Your booking request opens as a message you can review and send."
+        title={`Talk to the ${siteConfig.location} garage`}
+        description={`Send ${siteConfig.businessName} your vehicle details on WhatsApp, or call ${siteConfig.phone}. The workshop is at ${siteConfig.address}.`}
       />
 
       <div className="mt-8 grid gap-6 sm:mt-12 sm:gap-10 lg:grid-cols-[0.85fr_1.15fr]">

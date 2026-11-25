@@ -3,11 +3,11 @@ import { BookingLink } from "@/components/booking-link";
 import { SectionHeading } from "@/components/section-heading";
 import { Reveal } from "@/components/reveal";
 import { createPageMetadata } from "@/lib/page-metadata";
-import { getBookingHref, siteConfig } from "@/lib/site";
+import { formatTownList, getBookingHref, nearbyTowns, siteConfig } from "@/lib/site";
 
 export const metadata = createPageMetadata(
-  "About Our Garage",
-  `${siteConfig.businessName} provides vehicle servicing, diagnostics and car repairs for drivers in London and surrounding areas.`,
+  `About Our ${siteConfig.location} Garage`,
+  `${siteConfig.legalName} is a ${siteConfig.location} garage for car servicing, diagnostics and repairs, working with drivers across ${siteConfig.region}.`,
   "/about",
 );
 
@@ -38,15 +38,16 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
       <SectionHeading
+        as="h1"
         eyebrow="About the garage"
-        title="About M25 Motors"
-        description="M25 Motors provides vehicle servicing, diagnostics and repair services for drivers in London and surrounding areas. Contact the garage to discuss your vehicle and the work it may need."
+        title={`About ${siteConfig.businessName} in ${siteConfig.location}`}
+        description={`${siteConfig.legalName} services, diagnoses and repairs cars at ${siteConfig.streetAddress}, ${siteConfig.location} ${siteConfig.postalCode}. Drivers also come from ${formatTownList(nearbyTowns)}.`}
       />
 
       <div className="mt-10 grid gap-4 sm:mt-16 sm:gap-6 lg:grid-cols-2">
         <Reveal>
         <div className="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:rounded-[2rem] sm:p-8">
-          <h3 className="text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Vehicle care in UK</h3>
+          <h2 className="text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Vehicle care in {siteConfig.location}</h2>
           <ul className="mt-6 space-y-4 text-base text-zinc-600">
             <li>• Car servicing and routine maintenance.</li>
             <li>• Diagnostics for warning lights and vehicle faults.</li>
@@ -58,7 +59,7 @@ export default function AboutPage() {
 
         <Reveal delay={0.1}>
         <div className="overflow-hidden rounded-[1.5rem] border border-zinc-200 bg-zinc-900 p-5 text-white shadow-sm sm:rounded-[2rem] sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-400">Serving {siteConfig.serviceArea}</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-red-400">Serving {siteConfig.location} and {siteConfig.region}</p>
           <p className="mt-5 text-xl leading-8 text-zinc-100">
             Tell the garage what vehicle you have, what symptoms you have noticed and when they started. M25 Motors can discuss the appropriate next step and appointment availability.
           </p>

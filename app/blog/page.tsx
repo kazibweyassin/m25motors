@@ -10,7 +10,7 @@ import { getBookingHref, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata(
   "Used Car Reviews, Car Repair & Maintenance Guides",
-  `Used-car buying guides for popular UK models plus car servicing, MOT, brake and diagnostic advice for drivers from ${siteConfig.businessName}.`,
+  `Used-car buying guides for popular UK models, plus servicing, MOT, brake and diagnostic advice from ${siteConfig.businessName} in ${siteConfig.location}.`,
   "/blog",
 );
 
@@ -37,7 +37,7 @@ export default function BlogPage() {
           <div className="max-w-3xl">
             <p className="mb-4 inline-flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.28em] text-red-300"><span className="h-px w-8 bg-red-400" /> The M25 Motors journal</p>
             <h1 className="text-4xl font-semibold leading-[1.03] tracking-[-0.045em] sm:text-6xl">Straight answers for <span className="font-light italic text-red-300">better car care.</span></h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg sm:leading-8">Used-car reviews and practical guides to servicing, MOT preparation, brakes and warning lights. Read the checks, compare the exact car and follow links to official UK guidance.</p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg sm:leading-8">Used-car reviews and practical guides to servicing, MOT preparation, brakes and warning lights, written by {siteConfig.businessName} in {siteConfig.location}. Read the checks, compare the exact car and follow links to official UK guidance.</p>
             <p className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-zinc-400"><BookOpenCheck aria-hidden="true" className="h-4 w-4 text-red-300" /> Advice first. No guesswork or scare tactics.</p>
           </div>
         </div>

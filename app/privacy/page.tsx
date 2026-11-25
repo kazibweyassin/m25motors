@@ -13,6 +13,7 @@ export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
       <SectionHeading
+        as="h1"
         eyebrow="Privacy"
         title="How booking enquiries are handled"
         description="This page explains what happens when you use the vehicle enquiry form on this website."

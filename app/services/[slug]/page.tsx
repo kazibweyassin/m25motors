@@ -7,7 +7,7 @@ import { BookingLink } from "@/components/booking-link";
 import { Reveal } from "@/components/reveal";
 import { getBlogPostsForService } from "@/lib/blog";
 import { createPageMetadata } from "@/lib/page-metadata";
-import { getServiceBySlug, getPhoneHref, getServiceBookingHref, services, siteConfig } from "@/lib/site";
+import { formatTownList, getAreaServed, getServiceBySlug, getPhoneHref, getServiceBookingHref, nearbyTowns, services, siteConfig } from "@/lib/site";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -29,7 +29,7 @@ export async function generateMetadata({
 
   return createPageMetadata(
     `${service.title} in ${siteConfig.location}`,
-    `${service.shortDescription} Contact ${siteConfig.businessName} in ${siteConfig.location} to discuss your vehicle and arrange this service.`,
+    `${service.shortDescription} Book ${service.title.toLowerCase()} with ${siteConfig.businessName} in ${siteConfig.location}, ${siteConfig.region}.`,
     `/services/${service.slug}`,
   );
 }
@@ -80,7 +80,7 @@ export default async function ServiceDetailPage({
         <Reveal>
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Service detail</p>
-          <h1 className="mt-3 text-3xl font-black tracking-tight text-zinc-900 sm:mt-4 sm:text-5xl">{service.title}</h1>
+          <h1 className="mt-3 text-3xl font-black tracking-tight text-zinc-900 sm:mt-4 sm:text-5xl">{service.title} in {siteConfig.location}</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-zinc-600 sm:mt-6 sm:text-lg sm:leading-8">{service.description}</p>
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -113,7 +113,7 @@ export default async function ServiceDetailPage({
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-600">Local service area</p>
           <div className="mt-4 flex items-start gap-3 text-lg text-zinc-600">
             <MapPin className="mt-1 h-5 w-5 text-red-600" />
-            <span>M25 Motors serves drivers in {siteConfig.serviceArea}. Contact the garage to confirm whether it can help with your vehicle and location.</span>
+            <span>{service.title} is carried out at {siteConfig.streetAddress}, {siteConfig.location} {siteConfig.postalCode}. Drivers also come from {formatTownList(nearbyTowns)}. Contact the garage before you travel to confirm it can help.</span>
           </div>
         </Reveal>
       </div>
@@ -152,10 +152,13 @@ export default async function ServiceDetailPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        name: service.title,
+        "@id": `${url}#service`,
+        name: `${service.title} in ${siteConfig.location}`,
+        serviceType: service.title,
         description: service.description,
-        areaServed: siteConfig.serviceArea,
-        provider: { "@type": "AutoRepair", name: siteConfig.businessName, url: siteConfig.siteUrl },
+        url,
+        areaServed: getAreaServed(),
+        provider: { "@id": `${siteConfig.siteUrl}/#business` },
       }).replace(/</g, "\\u003c") }} />
     </div>
   );

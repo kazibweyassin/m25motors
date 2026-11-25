@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 
-const headline = ["Car", "repairs,", "without", "the", "guesswork."];
+const headline = ["Car", "repairs", "in", "Basildon,", "without", "the", "guesswork."];
 
 const containerVariants = {
   hidden: {},
@@ -29,7 +29,7 @@ export function StaggeredHeadline() {
   return (
     <motion.h1
       className="max-w-3xl text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl xl:text-8xl"
-      aria-label="Car repairs, without the guesswork."
+      aria-label="Car repairs in Basildon, without the guesswork."
       aria-live="off"
       variants={containerVariants}
       initial={reduceMotion ? false : "hidden"}
@@ -39,7 +39,7 @@ export function StaggeredHeadline() {
         <span key={word} aria-hidden="true">
           <span className="inline-block overflow-hidden pb-[0.08em] align-bottom">
             <motion.span
-              className={`inline-block ${index === 2 ? "font-light italic text-red-300" : ""}`}
+              className={`inline-block ${index === 3 ? "font-light italic text-red-300" : ""}`}
               variants={wordVariants}
             >
               {word}

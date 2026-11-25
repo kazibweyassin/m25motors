@@ -11,12 +11,12 @@ import { Reveal } from "@/components/reveal";
 import { BlogCard } from "@/components/blog-card";
 import { BookingLink } from "@/components/booking-link";
 import { WorkshopMap } from "@/components/workshop-map";
-import { getBookingHref, services, siteConfig } from "@/lib/site";
+import { formatTownList, garageFaqs, getBookingHref, nearbyTowns, services, siteConfig } from "@/lib/site";
 import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata(
-  "Car Repairs, Servicing & Diagnostics",
-  "Looking for a car mechanic ? M25 Motors offers vehicle servicing, diagnostics and repairs. Explore services and contact the garage about your car.",
+  `Car Repairs & Servicing in ${siteConfig.location}`,
+  `Basildon car mechanic for servicing, diagnostics, brakes, clutches and MOT preparation. ${siteConfig.businessName} on Timberlog Lane, ${siteConfig.region}. Call or WhatsApp to book.`,
   "/",
 );
 
@@ -39,8 +39,34 @@ const processSteps = [
 ];
 
 export default function HomePage() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${siteConfig.siteUrl}/#webpage`,
+        url: siteConfig.siteUrl,
+        name: `Car repairs and servicing in ${siteConfig.location}`,
+        description: `Servicing, diagnostics and repairs at ${siteConfig.legalName} in ${siteConfig.location}, ${siteConfig.region}.`,
+        inLanguage: "en-GB",
+        isPartOf: { "@id": `${siteConfig.siteUrl}/#website` },
+        about: { "@id": `${siteConfig.siteUrl}/#business` },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${siteConfig.siteUrl}/#faq`,
+        mainEntity: garageFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      },
+    ],
+  };
+
   return (
     <div className="relative isolate">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeSchema).replace(/</g, "\\u003c") }} />
       <HomeHeroBackground />
       <div className="relative z-10">
       <section className="relative min-h-0 overflow-hidden bg-zinc-950/70 text-white lg:min-h-[calc(100svh-5rem)]">
@@ -52,13 +78,13 @@ export default function HomePage() {
             <Reveal delay={0.12}>
               <p className="mb-3 inline-flex items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.24em] text-red-300 sm:mb-7 sm:text-xs sm:tracking-[0.28em]">
                 <BadgeCheck className="h-3.5 w-3.5 text-red-400" />
-                M25 Motors <span className="text-zinc-500">/</span> London
+                M25 Motors <span className="text-zinc-500">/</span> {siteConfig.location}
               </p>
             </Reveal>
             <StaggeredHeadline />
             <Reveal delay={0.34}>
               <p className="mt-4 max-w-xl text-base leading-7 text-zinc-300 sm:mt-7 sm:text-lg sm:leading-8">
-                Car servicing, diagnostics and repairs for UK drivers. Tell M25 Motors what your car needs and get clear next steps from the garage.
+                Servicing, diagnostics and mechanical repairs at the {siteConfig.location} workshop on Timberlog Lane. Drivers across {siteConfig.region} can call or WhatsApp the garage and get a clear next step.
               </p>
             </Reveal>
 
@@ -91,7 +117,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Services"
             title="Care for the miles ahead"
-            description="From scheduled servicing to fault finding and mechanical repairs, explore the work M25 Motors offers drivers."
+            description={`Scheduled servicing, fault finding and mechanical repairs at the ${siteConfig.location} workshop.`}
           />
           <Link href="/services" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-700 transition hover:text-red-900">
             All services <ArrowRight className="h-4 w-4" />
@@ -160,9 +186,56 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
         <SectionHeading
+          eyebrow={`${siteConfig.location} garage`}
+          title={`Car repairs for drivers in ${siteConfig.location} and ${siteConfig.region}`}
+          description={`${siteConfig.legalName} works from one workshop on Timberlog Lane, ${siteConfig.postalCode}. The visit is agreed by phone or WhatsApp before you bring the car in.`}
+        />
+        <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:p-8">
+            <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">One workshop, nearby towns welcome</h3>
+            <p className="mt-4 text-base leading-7 text-zinc-600">
+              People book servicing, diagnostics, brakes, clutches, engine repairs and MOT preparation here. Drivers also come from {formatTownList(nearbyTowns)}. Ask before you travel if you are further out.
+            </p>
+            <ul className="mt-6 flex flex-wrap gap-2">
+              <li className="rounded-full bg-zinc-950 px-3 py-1.5 text-sm font-semibold text-white">{siteConfig.location}</li>
+              {nearbyTowns.map((town) => (
+                <li key={town} className="rounded-full border border-zinc-200 bg-stone-50 px-3 py-1.5 text-sm text-zinc-700">{town}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:p-8">
+            <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">What to send with your enquiry</h3>
+            <ul className="mt-4 space-y-3 text-base leading-7 text-zinc-600">
+              <li>Registration, make and model.</li>
+              <li>The symptom, and when it started.</li>
+              <li>Any warning lights that are on.</li>
+              <li>The day you would like to visit {siteConfig.location}.</li>
+            </ul>
+            <p className="mt-6 text-base leading-7 text-zinc-600">
+              Call <a className="font-semibold text-zinc-900 underline decoration-red-200 underline-offset-4" href={`tel:${siteConfig.phone.replace(/\D/g, "")}`}>{siteConfig.phone}</a> or{" "}
+              <Link className="font-semibold text-zinc-900 underline decoration-red-200 underline-offset-4" href="/contact">send a WhatsApp message</Link>.
+              The address is {siteConfig.address}.
+            </p>
+          </div>
+        </div>
+        <div className="mt-8 sm:mt-10">
+          <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">Questions drivers ask</h3>
+          <div className="mt-4 space-y-3">
+            {garageFaqs.map((faq) => (
+              <article key={faq.question} className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <h4 className="text-lg font-bold text-zinc-900">{faq.question}</h4>
+                <p className="mt-2 text-base leading-7 text-zinc-600">{faq.answer}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <SectionHeading
           eyebrow="Directions"
-          title="Find the garage"
-          description="The map shows the M25 Motors & Repair Ltd listing. Open it in Google Maps for directions."
+          title={`Find the ${siteConfig.location} garage`}
+          description={`${siteConfig.legalName} is at ${siteConfig.address}. Open the listing in Google Maps for directions.`}
         />
         <div className="mt-8 sm:mt-12">
           <WorkshopMap />

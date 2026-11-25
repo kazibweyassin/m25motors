@@ -4,15 +4,15 @@ import { blogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
-    "",
-    "/about",
-    "/contact",
-    "/privacy",
-    "/services",
-  ].map((path) => ({
+    { path: "", changeFrequency: "weekly" as const, priority: 1 },
+    { path: "/services", changeFrequency: "weekly" as const, priority: 0.9 },
+    { path: "/contact", changeFrequency: "monthly" as const, priority: 0.9 },
+    { path: "/about", changeFrequency: "monthly" as const, priority: 0.7 },
+    { path: "/privacy", changeFrequency: "yearly" as const, priority: 0.2 },
+  ].map(({ path, changeFrequency, priority }) => ({
     url: `${siteConfig.siteUrl}${path}`,
-    changeFrequency: "weekly" as const,
-    priority: path === "" ? 1 : 0.7,
+    changeFrequency,
+    priority,
   }));
 
   const servicePages = services.map((service) => ({
