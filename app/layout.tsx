@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   },
   description: `Car servicing, diagnostics and repairs in ${siteConfig.location}, ${siteConfig.region}. ${siteConfig.legalName}, ${siteConfig.streetAddress}. Call or WhatsApp to book.`,
   applicationName: siteConfig.businessName,
+  keywords: ["car repairs Basildon", "car servicing Basildon", "vehicle diagnostics", "MOT preparation", "mechanic near me", "M25 Motors"],
   authors: [{ name: siteConfig.businessName, url: siteConfig.siteUrl }],
   creator: siteConfig.businessName,
   publisher: siteConfig.businessName,
