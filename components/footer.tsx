@@ -59,6 +59,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-xs leading-5 text-zinc-400 sm:px-6 sm:text-sm lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <p>© 2026 {siteConfig.businessName}. All rights reserved.</p>
           <p>Professional garage services with clear communication and honest advice.</p>
+          <a href="https://beelio.tech" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">Built by <span className="font-semibold text-zinc-200">Beelio</span></a>
         </div>
       </div>
     </footer>

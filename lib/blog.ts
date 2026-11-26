@@ -126,7 +126,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "mot-preparation-checklist-london",
     title: "MOT preparation checklist: what to check before the test",
-    excerpt: "A useful pre-MOT checklist for tyres, lights, visibility, brakes and warning lamps—and what a garage check can and cannot tell you.",
+    excerpt: "A useful pre-MOT checklist for tyres, lights, visibility, brakes and warning lamps, and what a garage check can and cannot tell you.",
     description: "Prepare for an MOT with this practical UK checklist covering tyres, lights, brakes, visibility and warning lamps, with official DVSA links and advice from M25 Motors in Basildon.",
     category: "MOT preparation",
     readingMinutes: 9,
@@ -224,7 +224,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "brake-warning-signs-car",
     title: "Brake warning signs: when your car needs an inspection",
-    excerpt: "Learn what squealing, grinding, vibration, pulling and a changed brake pedal can mean—and when to stop driving and get help.",
+    excerpt: "Learn what squealing, grinding, vibration, pulling and a changed brake pedal can mean, and when to stop driving and get help.",
     description: "Understand common car brake warning signs, what to do if braking changes and when to arrange a brake inspection in Basildon. Includes DVSA and Highway Code references.",
     category: "Brake safety",
     readingMinutes: 8,
@@ -306,7 +306,7 @@ export const blogPosts: BlogPost[] = [
     ],
     sources: [
       { title: "The Highway Code: Vehicle maintenance, safety and security", url: "https://www.gov.uk/guidance/the-highway-code/annex-6-vehicle-maintenance-safety-and-security" },
-      { title: "DVSA: MOT inspection manual for cars — brakes", url: "https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/1-brakes" },
+      { title: "DVSA: MOT inspection manual for cars: brakes", url: "https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/1-brakes" },
       { title: "GOV.UK: Car parts checked at an MOT", url: "https://www.gov.uk/government/publications/car-parts-checked-at-an-mot/car-parts-checked-at-an-mot" },
     ],
     relatedServices: [{ title: "Brake repairs", slug: "brake-repairs" }, { title: "Tyres and suspension", slug: "tyres-and-suspension" }],
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "engine-warning-light-what-to-do",
     title: "Engine warning light on? What to do before booking a diagnostic check",
-    excerpt: "A calm guide to dashboard warning lights, symptoms to record and why a fault code is a starting point—not the whole diagnosis.",
+    excerpt: "A calm guide to dashboard warning lights, symptoms to record and why a fault code is a starting point, not the whole diagnosis.",
     description: "Learn what to do when an engine management light appears, how to use your vehicle handbook, which symptoms need urgent help and what to share when booking car diagnostics in Basildon.",
     category: "Diagnostics",
     readingMinutes: 8,
@@ -395,7 +395,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     sources: [
-      { title: "DVSA: MOT inspection manual for cars — emissions", url: "https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/8-nuisance" },
+      { title: "DVSA: MOT inspection manual for cars: emissions", url: "https://www.gov.uk/guidance/mot-inspection-manual-for-private-passenger-and-light-commercial-vehicles/8-nuisance" },
       { title: "GOV.UK: How the MOT test works", url: "https://www.gov.uk/getting-an-mot/the-mot-test" },
       { title: "GOV.UK: Check your vehicle is safe to drive", url: "https://www.gov.uk/check-vehicle-safe" },
     ],
