@@ -21,7 +21,7 @@ export function WorkshopMap() {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 items-center text-sm font-semibold text-red-700 hover:text-red-900"
+          className="inline-flex min-h-11 items-center text-sm font-semibold text-red-800 hover:text-red-900"
         >
           Open in Google Maps
         </a>

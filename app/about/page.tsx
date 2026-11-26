@@ -71,7 +71,7 @@ export default function AboutPage() {
         {values.map(({ icon: Icon, title, text }, index) => (
           <Reveal key={title} delay={index * 0.07} lift>
           <div className="h-full rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm sm:p-6">
-            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-600">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-700">
               <Icon className="h-5 w-5" />
             </div>
             <h3 className="text-xl font-bold text-zinc-900">{title}</h3>
@@ -84,7 +84,7 @@ export default function AboutPage() {
       <div className="mt-14 rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:mt-20 sm:rounded-[2rem] sm:p-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Need a repair?</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700">Need a repair?</p>
             <h3 className="mt-3 text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Tell us what the vehicle needs</h3>
           </div>
           <BookingLink href={getBookingHref()} className="w-full sm:w-auto" />

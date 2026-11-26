@@ -14,7 +14,13 @@ export const siteConfig = {
   // Leave blank until the business confirms this mailbox is monitored.
   email: "",
   whatsapp: "+44 7803 080701",
-  openingHours: "",
+  // e.g. "Mon–Fri 8am–6pm, Sat 9am–1pm". Leave blank until confirmed.
+  openingHours: "9am–5pm",
+  // Google rating and review count from the confirmed listing. Leave blank/0 until verified.
+  googleRating: "",
+  googleReviewCount: 0,
+  // Any real certifications or accreditations to surface as trust signals.
+  certifications: [] as string[],
   // Confirmed Google Maps listing for M25 Motors & Repair Ltd.
   googleBusinessProfile: "https://maps.app.goo.gl/k42XEiPrXQeHWEJK9",
   mapLatitude: 51.5723655,

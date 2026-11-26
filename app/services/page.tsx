@@ -45,7 +45,7 @@ export default function ServicesPage() {
       <div className="mt-14 rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:mt-20 sm:rounded-[2rem] sm:p-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Need advice first?</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700">Need advice first?</p>
             <h3 className="mt-3 text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">Tell us what is happening with the vehicle</h3>
           </div>
           <BookingLink href={getBookingHref()} className="w-full sm:w-auto" />

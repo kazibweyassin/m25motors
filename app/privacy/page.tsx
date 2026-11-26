@@ -39,7 +39,7 @@ export default function PrivacyPage() {
           <p className="mt-3 leading-7 text-zinc-600">
             You can call M25 Motors instead of using the form. Do not include information in a message that you do not want to share with the garage or WhatsApp.
           </p>
-          <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="mt-4 inline-flex items-center gap-2 font-semibold text-red-700 hover:text-red-900">
+          <a href={`tel:${siteConfig.phone.replace(/\D/g, "")}`} className="mt-4 inline-flex items-center gap-2 font-semibold text-red-800 hover:text-red-900">
             <PhoneCall className="h-4 w-4" /> {siteConfig.phone}
           </a>
         </section>

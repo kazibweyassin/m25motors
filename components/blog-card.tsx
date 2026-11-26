@@ -28,7 +28,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           {post.marketStats ? <p className="text-xs font-semibold text-zinc-500">#{post.marketStats.rank} by UK used transactions <span aria-hidden="true">·</span> {post.marketStats.transactions.toLocaleString("en-GB")} transactions in {post.marketStats.period}</p> : null}
           <h3 className="text-xl font-semibold leading-snug tracking-tight text-zinc-900 sm:text-2xl">{post.title}</h3>
           <p className="text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">{post.excerpt}</p>
-          <span className="inline-flex items-center gap-2 border-t border-zinc-100 pt-4 text-sm font-bold text-red-700 transition-colors group-hover:text-red-900">
+          <span className="inline-flex items-center gap-2 border-t border-zinc-100 pt-4 text-sm font-bold text-red-800 transition-colors group-hover:text-red-900">
             Read the guide
             <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </span>

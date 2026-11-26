@@ -45,7 +45,7 @@ export default function BlogPage() {
 
       {usedCarReviews.length ? <section id="used-car-reviews" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <SectionHeading eyebrow="Used car reviews" title="Research the model before you buy" description="Start with a model guide, then check the exact car’s history, paperwork, equipment and condition. A popular model is not automatically the right car or a guarantee of reliability." />
-        <p className="mt-6 max-w-4xl text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">Our first five reviews cover the most-traded used models in the latest SMMT quarterly table available when these articles were prepared: Q2 2026. Transaction volume describes market popularity, not a quality or reliability rating. <a href="https://www.smmt.co.uk/vehicle-data/used-car-sales/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-red-700 underline underline-offset-4 hover:text-red-900">See SMMT model data <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" /></a></p>
+        <p className="mt-6 max-w-4xl text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">Our first five reviews cover the most-traded used models in the latest SMMT quarterly table available when these articles were prepared: Q2 2026. Transaction volume describes market popularity, not a quality or reliability rating. <a href="https://www.smmt.co.uk/vehicle-data/used-car-sales/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-red-800 underline underline-offset-4 hover:text-red-900">See SMMT model data <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" /></a></p>
         <div className="mt-7 grid gap-5 sm:mt-9 sm:gap-7 md:grid-cols-2 xl:grid-cols-3">
           {usedCarReviews.map((post) => <BlogCard key={post.slug} post={post} />)}
         </div>
@@ -60,7 +60,7 @@ export default function BlogPage() {
 
       <section className="mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-20 lg:px-8">
         <div className="flex flex-col gap-6 rounded-[1.5rem] bg-white p-5 shadow-sm sm:rounded-[2rem] sm:p-8 md:flex-row md:items-center md:justify-between">
-          <div><p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Need help with your car?</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">Tell the garage what you have noticed</h2><p className="mt-2 max-w-xl text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">Share the vehicle details and symptoms to discuss an inspection or repair enquiry.</p></div>
+          <div><p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700">Need help with your car?</p><h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">Tell the garage what you have noticed</h2><p className="mt-2 max-w-xl text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">Share the vehicle details and symptoms to discuss an inspection or repair enquiry.</p></div>
           <BookingLink href={getBookingHref()} className="w-full shrink-0 sm:w-auto" />
         </div>
       </section>

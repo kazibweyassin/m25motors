@@ -79,7 +79,7 @@ export default async function ServiceDetailPage({
       <div className="grid gap-7 sm:gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <Reveal>
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-600">Service detail</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-700">Service detail</p>
           <h1 className="mt-3 text-3xl font-black tracking-tight text-zinc-900 sm:mt-4 sm:text-5xl">{service.title} in {siteConfig.location}</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-zinc-600 sm:mt-6 sm:text-lg sm:leading-8">{service.description}</p>
 
@@ -105,14 +105,14 @@ export default async function ServiceDetailPage({
 
       <div className="mt-12 grid gap-4 sm:mt-16 sm:gap-8 lg:grid-cols-2">
         <Reveal className="rounded-[1.35rem] border border-zinc-200 bg-white p-5 shadow-sm sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-600">When to contact us</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-700">When to contact us</p>
           <p className="mt-4 text-lg leading-8 text-zinc-600">{service.whenToBook}</p>
         </Reveal>
 
         <Reveal delay={0.08} className="rounded-[1.35rem] border border-zinc-200 bg-white p-5 shadow-sm sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-600">Local service area</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-700">Local service area</p>
           <div className="mt-4 flex items-start gap-3 text-lg text-zinc-600">
-            <MapPin className="mt-1 h-5 w-5 text-red-600" />
+            <MapPin className="mt-1 h-5 w-5 text-red-700" />
             <span>{service.title} is carried out at {siteConfig.streetAddress}, {siteConfig.location} {siteConfig.postalCode}. Drivers also come from {formatTownList(nearbyTowns)}. Contact the garage before you travel to confirm it can help.</span>
           </div>
         </Reveal>
@@ -133,16 +133,16 @@ export default async function ServiceDetailPage({
       </div>
       {relatedArticles.length ? (
         <section aria-labelledby="related-articles-title" className="mt-12 border-t border-zinc-200 pt-10 sm:mt-16 sm:pt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-600">From the M25 Motors blog</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-red-700">From the M25 Motors blog</p>
           <h2 id="related-articles-title" className="mt-3 text-2xl font-black tracking-tight text-zinc-900 sm:text-3xl">More advice about {service.title.toLowerCase()}</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2">
             {relatedArticles.map((post) => (
               <li key={post.slug}>
                 <Link href={`/blog/${post.slug}`} className="group block h-full rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-red-200 hover:shadow-md sm:p-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">{post.category} <span className="px-1 text-zinc-400">/</span> {post.readingMinutes} min read</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-red-800">{post.category} <span className="px-1 text-zinc-400">/</span> {post.readingMinutes} min read</p>
                   <h3 className="mt-3 text-lg font-semibold leading-snug text-zinc-900 transition-colors group-hover:text-red-800">{post.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-zinc-600">{post.excerpt}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-700">Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-red-800">Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
                 </Link>
               </li>
             ))}

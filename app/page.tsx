@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/page-metadata";
-import { ArrowRight, BadgeCheck, CalendarDays, ClipboardCheck, MessageSquareText, PhoneCall } from "lucide-react";
+import { ArrowRight, BadgeCheck, CalendarDays, ClipboardCheck, Clock3, MapPin, MessageSquareText, PhoneCall, Star } from "lucide-react";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { CarMotion } from "@/components/car-motion";
@@ -11,7 +11,7 @@ import { Reveal } from "@/components/reveal";
 import { BlogCard } from "@/components/blog-card";
 import { BookingLink } from "@/components/booking-link";
 import { WorkshopMap } from "@/components/workshop-map";
-import { formatTownList, garageFaqs, getBookingHref, nearbyTowns, services, siteConfig } from "@/lib/site";
+import { formatTownList, garageFaqs, getBookingHref, getGoogleMapsHref, nearbyTowns, services, siteConfig } from "@/lib/site";
 import { blogPosts } from "@/lib/blog";
 
 export const metadata: Metadata = createPageMetadata(
@@ -75,16 +75,26 @@ export default function HomePage() {
 
         <div className="relative z-10 mx-auto grid min-h-0 max-w-[92rem] items-center gap-5 px-4 py-6 sm:gap-8 sm:px-6 sm:py-14 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[0.85fr_1.15fr] lg:gap-12 lg:px-10 lg:py-16">
           <div className="max-w-2xl py-1 sm:py-4 lg:py-10">
-            <Reveal delay={0.12}>
-              <p className="mb-3 inline-flex items-center gap-2 text-[0.65rem] font-bold uppercase tracking-[0.24em] text-red-300 sm:mb-7 sm:text-xs sm:tracking-[0.28em]">
-                <BadgeCheck className="h-3.5 w-3.5 text-red-400" />
-                M25 Motors <span className="text-zinc-500">/</span> {siteConfig.location}
-              </p>
-            </Reveal>
             <StaggeredHeadline />
             <Reveal delay={0.34}>
               <p className="mt-4 max-w-xl text-base leading-7 text-zinc-300 sm:mt-7 sm:text-lg sm:leading-8">
-                Servicing, diagnostics and mechanical repairs at the {siteConfig.location} workshop on Timberlog Lane. Drivers across {siteConfig.region} can call or WhatsApp the garage and get a clear next step.
+                Servicing, diagnostics and mechanical repairs at the {siteConfig.location} workshop on Timberlog Lane, with a clear next step by phone or WhatsApp.
+              </p>
+              <p className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-zinc-400">
+                <span className="inline-flex items-center gap-1.5"><MapPin className="h-4 w-4 text-red-300" aria-hidden="true" />{siteConfig.location} {siteConfig.postalCode}</span>
+                <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4 text-red-300" aria-hidden="true" />{siteConfig.openingHours || "Visits by phone & WhatsApp"}</span>
+                <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-4 w-4 text-red-300" aria-hidden="true" />No-obligation quotes</span>
+                {siteConfig.googleRating ? (
+                  <a
+                    href={getGoogleMapsHref()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10"
+                  >
+                    <Star className="h-3.5 w-3.5 fill-red-400 text-red-400" aria-hidden="true" />
+                    {siteConfig.googleRating}{siteConfig.googleReviewCount ? ` (${siteConfig.googleReviewCount})` : ""} on Google
+                  </a>
+                ) : null}
               </p>
             </Reveal>
 
@@ -100,12 +110,6 @@ export default function HomePage() {
               </a> : <Link href="/contact" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/5">Contact the garage</Link>}
             </div>
             </Reveal>
-
-            <div className="mt-12 hidden max-w-xl grid-cols-3 border-t border-white/15 pt-5 sm:grid">
-              <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">01 / CARE</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Routine servicing</p></div>
-              <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">02 / FIND</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Vehicle diagnostics</p></div>
-              <div><p className="text-[10px] font-bold tracking-[0.22em] text-red-300">03 / FIX</p><p className="mt-2 text-xs text-zinc-300 sm:text-sm">Mechanical repairs</p></div>
-            </div>
           </div>
 
           <CarMotion />
@@ -119,15 +123,15 @@ export default function HomePage() {
             title="Care for the miles ahead"
             description={`Scheduled servicing, fault finding and mechanical repairs at the ${siteConfig.location} workshop.`}
           />
-          <Link href="/services" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-700 transition hover:text-red-900">
+          <Link href="/services" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-800 transition hover:text-red-900">
             All services <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         <div className="mt-8 grid gap-5 sm:mt-12 sm:gap-8 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => (
-            <Reveal key={service.slug} delay={index * 0.08} lift>
-              <ServiceCard service={service} />
+            <Reveal key={service.slug} delay={index * 0.08} lift className={index === 0 ? "md:col-span-2" : undefined}>
+              <ServiceCard service={service} featured={index === 0} />
             </Reveal>
           ))}
         </div>
@@ -142,10 +146,10 @@ export default function HomePage() {
               description="Read practical repair guides and used-car reviews, with links to official UK sources and checks."
             />
             <div className="flex flex-col items-start gap-2 self-start sm:items-end">
-              <Link href="/blog" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-700 transition hover:text-red-900">
+              <Link href="/blog" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm font-bold text-red-800 transition hover:text-red-900">
                 Browse all articles <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/blog#used-car-reviews" className="inline-flex min-h-11 items-center text-sm font-semibold text-zinc-600 transition hover:text-red-700">Explore used-car reviews</Link>
+              <Link href="/blog#used-car-reviews" className="inline-flex min-h-11 items-center text-sm font-semibold text-zinc-600 transition hover:text-red-800">Explore used-car reviews</Link>
             </div>
           </div>
           <div className="mt-8 grid gap-5 sm:mt-10 sm:gap-7 md:grid-cols-2 xl:grid-cols-3">
@@ -159,7 +163,6 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="mb-4 inline-flex items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.28em] text-red-300"><span className="h-px w-8 bg-red-500" /> How it works</p>
               <h2 className="text-4xl font-semibold leading-[1.04] tracking-[-0.045em] text-white sm:text-5xl">A clearer route from message to <span className="font-light italic text-red-300">workshop.</span></h2>
               <p className="mt-5 max-w-xl text-base leading-7 text-zinc-300 sm:text-lg sm:leading-8">Share your vehicle details, agree the next step, then visit at a time arranged with the garage.</p>
             </div>
@@ -246,8 +249,7 @@ export default function HomePage() {
         <div className="rounded-[1.5rem] bg-zinc-950 p-5 text-white shadow-xl sm:rounded-[2.2rem] sm:p-10 lg:p-14">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-red-400">Need help today?</p>
-              <h2 className="mt-3 text-2xl font-black tracking-tight text-white sm:text-4xl">
+              <h2 className="text-2xl font-black tracking-tight text-white sm:text-4xl">
                 Book a repair, request a quote or call the garage
               </h2>
             </div>

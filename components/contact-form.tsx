@@ -61,7 +61,7 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm sm:space-y-6 sm:rounded-[2rem] sm:p-8">
       <div className="flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-600">
+        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-700">
           <MessageSquareText className="h-5 w-5" />
         </div>
         <div>
@@ -82,7 +82,7 @@ export function ContactForm() {
             aria-describedby={errors.name ? "name-error" : undefined}
             className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 outline-none transition focus:border-zinc-400 focus:bg-white"
           />
-          {errors.name ? <p id="name-error" role="alert" className="mt-2 text-sm text-red-600">{errors.name.message}</p> : null}
+          {errors.name ? <p id="name-error" role="alert" className="mt-2 text-sm text-red-700">{errors.name.message}</p> : null}
         </div>
 
         <div>
@@ -97,7 +97,7 @@ export function ContactForm() {
             aria-describedby={errors.phone ? "phone-error" : undefined}
             className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 outline-none transition focus:border-zinc-400 focus:bg-white"
           />
-          {errors.phone ? <p id="phone-error" role="alert" className="mt-2 text-sm text-red-600">{errors.phone.message}</p> : null}
+          {errors.phone ? <p id="phone-error" role="alert" className="mt-2 text-sm text-red-700">{errors.phone.message}</p> : null}
         </div>
 
         <div>
@@ -111,7 +111,7 @@ export function ContactForm() {
             aria-describedby={errors.email ? "email-error" : undefined}
             className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 outline-none transition focus:border-zinc-400 focus:bg-white"
           />
-          {errors.email ? <p id="email-error" role="alert" className="mt-2 text-sm text-red-600">{errors.email.message}</p> : null}
+          {errors.email ? <p id="email-error" role="alert" className="mt-2 text-sm text-red-700">{errors.email.message}</p> : null}
         </div>
 
         <div>
@@ -124,7 +124,7 @@ export function ContactForm() {
             aria-describedby={errors.vehicle ? "vehicle-error" : undefined}
             className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 outline-none transition focus:border-zinc-400 focus:bg-white"
           />
-          {errors.vehicle ? <p id="vehicle-error" role="alert" className="mt-2 text-sm text-red-600">{errors.vehicle.message}</p> : null}
+          {errors.vehicle ? <p id="vehicle-error" role="alert" className="mt-2 text-sm text-red-700">{errors.vehicle.message}</p> : null}
         </div>
 
         <div>
@@ -158,7 +158,7 @@ export function ContactForm() {
             <option value="Tyres & Suspension">Tyres & Suspension</option>
             <option value="Electrical Faults">Electrical Faults</option>
           </select>
-          {errors.service ? <p id="service-error" role="alert" className="mt-2 text-sm text-red-600">{errors.service.message}</p> : null}
+          {errors.service ? <p id="service-error" role="alert" className="mt-2 text-sm text-red-700">{errors.service.message}</p> : null}
         </div>
 
         <div className="md:col-span-2">
@@ -172,7 +172,7 @@ export function ContactForm() {
             aria-describedby={errors.description ? "description-error" : undefined}
             className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 outline-none transition focus:border-zinc-400 focus:bg-white"
           />
-          {errors.description ? <p id="description-error" role="alert" className="mt-2 text-sm text-red-600">{errors.description.message}</p> : null}
+          {errors.description ? <p id="description-error" role="alert" className="mt-2 text-sm text-red-700">{errors.description.message}</p> : null}
         </div>
 
         <div>

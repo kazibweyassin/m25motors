@@ -97,10 +97,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />
       <div className="mx-auto max-w-7xl px-4 pb-14 pt-8 sm:px-6 sm:pb-20 sm:pt-12 lg:px-8">
-        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-zinc-500"><Link href="/" className="transition-colors hover:text-red-700">Home</Link><span aria-hidden="true" className="px-2">/</span><Link href="/blog" className="transition-colors hover:text-red-700">Blog</Link><span aria-hidden="true" className="px-2">/</span><span aria-current="page" className="text-zinc-800">{post.category}</span></nav>
+        <nav aria-label="Breadcrumb" className="mb-8 text-sm text-zinc-500"><Link href="/" className="transition-colors hover:text-red-800">Home</Link><span aria-hidden="true" className="px-2">/</span><Link href="/blog" className="transition-colors hover:text-red-800">Blog</Link><span aria-hidden="true" className="px-2">/</span><span aria-current="page" className="text-zinc-800">{post.category}</span></nav>
 
         <header className="mx-auto max-w-4xl">
-          <p className="text-xs font-bold uppercase tracking-[0.24em] text-red-700">M25 Motors <span className="px-1 text-zinc-400">/</span> {post.category}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.24em] text-red-800">M25 Motors <span className="px-1 text-zinc-400">/</span> {post.category}</p>
           <h1 className="mt-4 text-4xl font-semibold leading-[1.05] tracking-[-0.045em] text-zinc-950 sm:text-5xl lg:text-6xl">{post.title}</h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">{post.introduction}</p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-500">
@@ -111,9 +111,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {isUsedCarReview && post.marketStats ? <section aria-label={`${post.model} used car overview`} className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-3">
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-700">Market snapshot</p><p className="mt-2 text-sm leading-6 text-zinc-700"><strong>#{post.marketStats.rank}</strong> by UK used transactions in {post.marketStats.period} ({post.marketStats.transactions.toLocaleString("en-GB")} sales).</p></div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-700">May suit</p><p className="mt-2 text-sm leading-6 text-zinc-700">{post.buyerFit}</p></div>
-          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-700">Check carefully</p><p className="mt-2 text-sm leading-6 text-zinc-700">{post.checkFocus}</p></div>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Market snapshot</p><p className="mt-2 text-sm leading-6 text-zinc-700"><strong>#{post.marketStats.rank}</strong> by UK used transactions in {post.marketStats.period} ({post.marketStats.transactions.toLocaleString("en-GB")} sales).</p></div>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">May suit</p><p className="mt-2 text-sm leading-6 text-zinc-700">{post.buyerFit}</p></div>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-red-800">Check carefully</p><p className="mt-2 text-sm leading-6 text-zinc-700">{post.checkFocus}</p></div>
         </section> : null}
 
         <figure className="relative mx-auto mt-8 aspect-[16/9] max-w-6xl overflow-hidden rounded-[1.25rem] bg-zinc-900 sm:mt-12 sm:rounded-[2rem]">
@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <nav aria-label="In this guide" className="mt-8 rounded-2xl border border-zinc-200 bg-white p-5 sm:p-7">
               <h2 className="font-semibold text-zinc-900">In this article</h2>
-              <ol className="mt-3 grid gap-2 text-sm leading-6 text-zinc-600 sm:grid-cols-2">{post.sections.map((section, index) => <li key={section.heading}><a href={`#section-${index + 1}`} className="transition-colors hover:text-red-700">{section.heading}</a></li>)}</ol>
+              <ol className="mt-3 grid gap-2 text-sm leading-6 text-zinc-600 sm:grid-cols-2">{post.sections.map((section, index) => <li key={section.heading}><a href={`#section-${index + 1}`} className="transition-colors hover:text-red-800">{section.heading}</a></li>)}</ol>
             </nav>
 
             <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
@@ -146,13 +146,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <section aria-labelledby="faq-title" className="mt-12 border-t border-zinc-200 pt-9 sm:mt-16 sm:pt-12">
               <h2 id="faq-title" className="text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">Common questions</h2>
-              <div className="mt-6 divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white px-5 sm:px-7">{post.questions.map((item) => <details key={item.question} className="group py-5"><summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold leading-6 text-zinc-900 marker:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-600"><span>{item.question}</span><span aria-hidden="true" className="shrink-0 text-xl leading-5 text-red-700 transition-transform group-open:rotate-45">+</span></summary><p className="mt-3 pr-8 text-sm leading-7 text-zinc-600 sm:text-base">{item.answer}</p></details>)}</div>
+              <div className="mt-6 divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white px-5 sm:px-7">{post.questions.map((item) => <details key={item.question} className="group py-5"><summary className="flex cursor-pointer list-none items-start justify-between gap-4 font-semibold leading-6 text-zinc-900 marker:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-600"><span>{item.question}</span><span aria-hidden="true" className="shrink-0 text-xl leading-5 text-red-800 transition-transform group-open:rotate-45">+</span></summary><p className="mt-3 pr-8 text-sm leading-7 text-zinc-600 sm:text-base">{item.answer}</p></details>)}</div>
             </section>
 
             <section aria-labelledby="sources-title" className="mt-10 rounded-2xl border border-zinc-200 bg-white p-5 sm:mt-12 sm:p-7">
               <h2 id="sources-title" className="text-lg font-semibold text-zinc-900">Official references</h2>
               <p className="mt-2 text-sm leading-6 text-zinc-600">Use these primary sources for current rules and vehicle-specific guidance.</p>
-              <ul className="mt-4 space-y-3">{post.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-sm font-medium leading-6 text-red-700 underline decoration-red-200 underline-offset-4 transition hover:text-red-900"><span>{source.title}</span><ExternalLink aria-hidden="true" className="mt-1 h-3.5 w-3.5 shrink-0" /></a></li>)}</ul>
+              <ul className="mt-4 space-y-3">{post.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-sm font-medium leading-6 text-red-800 underline decoration-red-200 underline-offset-4 transition hover:text-red-900"><span>{source.title}</span><ExternalLink aria-hidden="true" className="mt-1 h-3.5 w-3.5 shrink-0" /></a></li>)}</ul>
             </section>
             <p className="mt-6 text-xs leading-5 text-zinc-500">General information only. It is not a diagnosis or a substitute for your vehicle handbook, official guidance or an in-person inspection. If the vehicle may be unsafe, stop somewhere safe and seek professional assistance.</p>
           </article>
@@ -164,8 +164,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="mt-3 text-sm leading-6 text-zinc-300">{isUsedCarReview ? `Ask ${siteConfig.businessName} in ${siteConfig.location} whether it can help check this vehicle before you commit. Confirm availability and what the check includes.` : `Share your vehicle details with the ${siteConfig.location} garage and talk through what you have noticed.`}</p>
               <BookingLink href={bookingHref ?? "/contact"} className="mt-5 w-full">{isUsedCarReview ? "Ask about this car on WhatsApp" : "Book on WhatsApp"}</BookingLink>
             </div>
-            {related.length ? <div className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6"><h2 className="font-semibold text-zinc-900">Related services</h2><ul className="mt-3 space-y-3">{related.map(({ title, slug }) => <li key={slug}><Link href={`/services/${slug}`} className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-zinc-700 transition hover:text-red-700">{title}<ArrowRight aria-hidden="true" className="h-3.5 w-3.5" /></Link></li>)}</ul></div> : null}
-            <Link href="/blog" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-zinc-600 transition hover:text-red-700"><ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to the blog</Link>
+            {related.length ? <div className="rounded-2xl border border-zinc-200 bg-white p-5 sm:p-6"><h2 className="font-semibold text-zinc-900">Related services</h2><ul className="mt-3 space-y-3">{related.map(({ title, slug }) => <li key={slug}><Link href={`/services/${slug}`} className="inline-flex items-center gap-2 text-sm font-medium leading-6 text-zinc-700 transition hover:text-red-800">{title}<ArrowRight aria-hidden="true" className="h-3.5 w-3.5" /></Link></li>)}</ul></div> : null}
+            <Link href="/blog" className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-zinc-600 transition hover:text-red-800"><ArrowLeft aria-hidden="true" className="h-4 w-4" /> Back to the blog</Link>
           </aside>
         </div>
       </div>
